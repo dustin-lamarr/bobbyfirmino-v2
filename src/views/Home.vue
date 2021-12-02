@@ -1,14 +1,12 @@
 <template>
   <div class="w-screen h-screen bg-black">
     <Nav 
-    @click="logKitClick"
-    @home="this.kit = 'home'"
+    @home="homeKit"
     @away="this.kit = 'away'"
     @third="this.kit = 'third'"
-    :class="{ kit: this.kit }"
     />
     <Dashboard 
-   :class="{kit: this.kit}"
+   :class="{home: this.home, away: this.away, third: this.third}"
     >
     <PremTable/>
     </Dashboard>
@@ -28,24 +26,35 @@ export default {
     PremTable
   },
 
+  props: {
+  },
+
   data() {
   return {
     kit: null,
+    home: null,
+    away: null,
+    third: null
   }
 },
-  methods: {
-    logKitClick() {
-        console.log(this.kit)
+
+  method: {
+    homeKit() {
+      this.home = true
+      const nav = document.getElementById('nav')
+      nav.classList.add('border-orange')
+      console.log(nav)
     }
   }
+ 
 }
-
-
 
 
 // console.log(api)
 </script>
 
 <style scoped>
+.home {
 
+}
 </style>
