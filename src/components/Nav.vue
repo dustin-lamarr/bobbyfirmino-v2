@@ -12,10 +12,10 @@
     id="navbar"
   >
     <div class="justify-start ml-4" id="navbarLinks">
-      <a class="font-normal" href="/">Home</a>
-      <a class="pl-3 font-normal" href="/profile">Profile</a>
-      <a class="px-3 font-normal" id="logout">Logout</a>
-      <a class="font-normal" href="/about" @click="$emit('about')">About</a>
+      <button class="font-normal" @click="$emit('default')">Home</button>
+      <!-- <button class="pl-3 font-normal">Profile</button> -->
+      <!-- <button class="px-3 font-normal" id="logout">Logout</button> -->
+      <button class="font-normal pl-2" @click="$emit('about')">About</button>
     </div>
     <div class="justify-end flex flex-row mr-4 content-center">
       <p class="">Choose a Kit:</p>
