@@ -9,16 +9,16 @@
       justify-between
       border-b-8 
     "
-    id="nav"
+    id="navbar"
   >
-    <div class="justify-start ml-4" id="navbarNavAltMarkup">
-      <a class="font-normal text-cream" href="/">Home</a>
-      <a class="pl-3 font-normal text-cream" href="/profile">Profile</a>
-      <a class="px-3 font-normal text-cream" id="logout">Logout</a>
-      <a class="font-normal text-cream" href="/about">About</a>
+    <div class="justify-start ml-4" id="navbarLinks">
+      <a class="font-normal" href="/">Home</a>
+      <a class="pl-3 font-normal" href="/profile">Profile</a>
+      <a class="px-3 font-normal" id="logout">Logout</a>
+      <a class="font-normal" href="/about" @click="$emit('about')">About</a>
     </div>
     <div class="justify-end flex flex-row mr-4 content-center">
-      <p class="text-cream">Choose a Kit:</p>
+      <p class="">Choose a Kit:</p>
       <button class="px-2" title="Home" @click="$emit('home')">
         <svg class="inline" width="3px" height="10px">
           <rect width="3px" height="10px" style="fill:#F7664D"/>
