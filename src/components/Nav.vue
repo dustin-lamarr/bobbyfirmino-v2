@@ -15,7 +15,7 @@
     id="navbar"
   >
     <div class="justify-start ml-4" id="navbarLinks">
-      <button class="" @click="$emit('default', 'default')">Home</button>
+      <button class="" @click="$emit('homeView', 'homeView')">Home</button>
       <!-- <button class="pl-3 ">Profile</button> -->
       <!-- <button class="px-3 " id="logout">Logout</button> -->
       <button class=" pl-2" @click="$emit('about')">About</button>

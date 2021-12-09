@@ -2,7 +2,7 @@
   <div class="w-screen h-screen bg-black sm:overflow-hidden overflow-y-scroll">
     <Nav
       @click="showKit"
-      @default="this.default = true"
+      @homeView="showAction"
       @about="this.about = true"
       :class="{
         'border-orange text-cream': home,
@@ -29,18 +29,12 @@
       }"
       :home="home"
     >
-      <ActionBar @click="showAction"
-      :home="home"
-      :away="away"
-      :third="third"
-       />
+      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
       <template v-if="song">
         <Song />
       </template>
       <template v-if="table">
-        <PremTable
-          :tableData="tableData"
-        />
+        <PremTable :tableData="tableData" />
       </template>
       <template>
         <About v-if="about" />
@@ -75,7 +69,7 @@ export default {
 
   data() {
     return {
-      default: true,
+      homeView: true,
       home: true,
       away: null,
       third: null,
@@ -86,9 +80,7 @@ export default {
     };
   },
 
-  computed: {
-    
-  },
+  computed: {},
 
   methods: {
     showKit(kit) {
@@ -103,13 +95,13 @@ export default {
           this.home = null;
           this.away = true;
           this.third = null;
-          break
+          break;
 
-           case "third":
+        case "third":
           this.home = null;
           this.away = null;
           this.third = true;
-          break
+          break;
       }
     },
     showAction(action) {
@@ -123,14 +115,13 @@ export default {
           this.table = true;
           this.song = null;
           break;
+
+        case "homeView":
+          this.table = null;
+          this.song = null;
+          break;
       }
     },
-    returnHome(clear) {
-      if(clear === 'default') {
-        this.song = null
-        this.table = null
-      }
-    }
   },
 };
 </script>

@@ -28,7 +28,7 @@
         'border-red': third
         }"
       >
-        Bobby Firmino Song
+        Roberto Firmino Bio
       </button>
       <button class="shadow-md border-2 rounded p-1 tracking-wide"
       :class="{
