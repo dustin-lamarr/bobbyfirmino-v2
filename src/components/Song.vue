@@ -1,10 +1,8 @@
 <template>
-<div class="flex-col">
-      <h2 class="text-center">Best in the World, Bobby Firmino</h2>
+<div class="flex-col py-8 text-center font-cursive text-2xl font-light">
+      <h2 class="">Best in the World, Bobby Firmino</h2>
       <p
         class="
-          text-center
-          font-normal
           pl-4
           pt-4
           whitespace-pre-wrap

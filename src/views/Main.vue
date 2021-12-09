@@ -1,11 +1,9 @@
 <template>
-  <div class="w-screen h-screen bg-black">
+  <div class="w-screen h-screen bg-black sm:overflow-hidden overflow-y-scroll">
     <Nav
-      @home="homeKit"
-      @away="awayKit"
-      @third="thirdKit"
-      @about="renderAbout"
-      @default="renderHome"
+      @click="showKit"
+      @default="this.default = true"
+      @about="this.about = true"
       :class="{
         'border-orange text-cream': home,
         'border-green text-cream': away,
@@ -17,85 +15,124 @@
         bg-red
         w-auto
         self-center
-        flex flex-row
-        md:flex-wrap
+        flex flex-col flex-wrap
         justify-evenly
         items-center
         py-4
-        h-1/2
+        h-auto
         border-b-8
       "
       :class="{
         'bg-red border-orange text-cream': home,
-        'bg-cream border-green text-black': away,
+        'bg-cream border-orange text-orange': away,
         'bg-yellow border-red text-red': third,
       }"
+      :home="home"
     >
-    <template v-if="homeView">
-      <Song/>
-      <PremTable :class="{ 'border-orange': home, 'border-red': third }" />
-    </template>
-      <About v-if="aboutView" />
+      <ActionBar @click="showAction"
+      :home="home"
+      :away="away"
+      :third="third"
+       />
+      <template v-if="song">
+        <Song />
+      </template>
+      <template v-if="table">
+        <PremTable
+          :tableData="tableData"
+        />
+      </template>
+      <template>
+        <About v-if="about" />
+      </template>
     </div>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Nav.vue";
+import ActionBar from "../components/ActionBar.vue";
 import Song from "../components/Song.vue";
 import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
-// import api from '../js/api.js'
+import tableAPI from "../js/api.js";
 
 export default {
+  created() {
+    tableAPI().then((res) => {
+      this.tableData = res.data[0].teams;
+      console.log("hit api >:|");
+    });
+  },
+
   components: {
     Nav,
     Song,
     About,
     PremTable,
+    ActionBar,
   },
-
-  props: {},
 
   data() {
     return {
-      kit: null,
+      default: true,
       home: true,
       away: null,
       third: null,
-      homeView: true,
-      aboutView: null,
+      song: null,
+      table: null,
+      about: null,
+      tableData: {},
     };
   },
+
+  computed: {
+    
+  },
+
   methods: {
-    homeKit() {
-      this.home = true;
-      this.away = false;
-      this.third = false;
+    showKit(kit) {
+      switch (kit) {
+        case "home":
+          this.home = true;
+          this.away = null;
+          this.third = null;
+          break;
+
+        case "away":
+          this.home = null;
+          this.away = true;
+          this.third = null;
+          break
+
+           case "third":
+          this.home = null;
+          this.away = null;
+          this.third = true;
+          break
+      }
     },
-    awayKit() {
-      this.away = true;
-      this.home = false;
-      this.third = false;
+    showAction(action) {
+      switch (action) {
+        case "song":
+          this.song = true;
+          this.table = null;
+          break;
+
+        case "table":
+          this.table = true;
+          this.song = null;
+          break;
+      }
     },
-    thirdKit() {
-      this.third = true;
-      this.home = false;
-      this.away = false;
-    },
-    renderAbout() {
-      this.aboutView = true;
-      this.homeView = false;
-      console.log("about click")
-    },
-    renderHome() {
-      this.homeView = true
-      this.aboutView = false
+    returnHome(clear) {
+      if(clear === 'default') {
+        this.song = null
+        this.table = null
+      }
     }
   },
 };
-
-// console.log(api)
 </script>
 
 <style scoped></style>

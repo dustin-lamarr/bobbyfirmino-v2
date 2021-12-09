@@ -1,6 +1,7 @@
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './index.html',
+    './src/**/*.{vue,html,js,ts,jsx,tsx}'],
   theme: {
     colors: {
       red: '#B91331',
@@ -11,9 +12,10 @@ module.exports = {
       black: 'black',
       white: 'white'
     },
-    extend: {},
-  },
-  variants: {
+    fontFamily: {
+      cursive: ['Bebas Neue', 'cursive'],
+      mono: ['PT Mono', 'monospace']
+    },
     extend: {},
   },
   plugins: [],
