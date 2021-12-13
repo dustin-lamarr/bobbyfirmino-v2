@@ -27,14 +27,15 @@
         'bg-cream border-orange text-orange': away,
         'bg-yellow border-red text-red': third,
       }"
-      :home="home"
     >
       <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
       <template v-if="song">
         <Song />
       </template>
       <template v-if="table">
-        <PremTable :tableData="tableData" />
+        <PremTable :tableData="tableData" 
+        :home="home"
+        />
       </template>
       <template>
         <About v-if="about" />

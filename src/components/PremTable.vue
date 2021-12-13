@@ -1,96 +1,166 @@
 <template>
   <div class="content-center flex-col">
-    <table
-      class="table-auto h-full mr-6 ml-4 w-auto font-mono border-2"
+    <div
+      class="
+        table table-auto
+        h-full
+        mr-6
+        ml-4
+        w-auto
+        font-mono
+        border-2 border-b-0
+      "
       :class="{
-        'border-orange text-cream': this.home,
+        'border-orange': home,
       }"
     >
-      <caption class="flex-row pb-2">
-        2021-22 EPL Table
-      </caption>
-      <thead>
-        <tr class="flex-row text-sm">
-          <th class="flex-initial border-2 border-s px-2 py-1">Club</th>
-          <th class="flex-initial border-2 border-l-0 border-solid px-2">MP</th>
-          <th class="flex-initial border-2 border-l-0 border-solid px-2">W</th>
-          <th class="flex-initial border-2 border-l-0 border-solid px-2">D</th>
-          <th class="flex-initial border-2 border-l-0 border-solid px-2">L</th>
-          <th class="flex-initial border-2 border-l-0 border-solid px-2">
+      <div class="table-caption flex-row pb-2">2021-22 EPL Table</div>
+      <div class="table-header-group flex">
+        <div class="table-row text-sm text-center border-b-2 flex">
+          <div
+            class="table-cell flex-initial border-b-2 px-2 py-1"
+            :class="{
+              'border-orange': home,
+            }"
+          >
+            Club
+          </div>
+          <div
+            class="table-cell flex-initial border-b-2 border-l-2 px-2"
+            :class="{
+              'border-orange': home,
+            }"
+          >
+            MP
+          </div>
+          <div
+            class="table-cell flex-initial border-b-2 border-l-2 px-2"
+            :class="{
+              'border-orange': home,
+            }"
+          >
+            W
+          </div>
+          <div
+            class="table-cell flex-initial border-b-2 border-l-2 px-2"
+            :class="{
+              'border-orange': home,
+            }"
+          >
+            D
+          </div>
+          <div
+            class="table-cell flex-initial border-b-2 border-l-2 px-2"
+            :class="{
+              'border-orange': home,
+            }"
+          >
+            L
+          </div>
+          <div
+            class="table-cell flex-initial border-b-2 border-l-2 px-2"
+            :class="{
+              'border-orange': home,
+            }"
+          >
             Pts
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
+          </div>
+        </div>
+      </div>
+      <div class="table-row-group">
+        <div
           v-for="(club, id) in tableData"
           :key="id"
-          class="flex-col text-center text-sm"
+          class="table-row text-center text-sm"
         >
-          <td
+          <div
             class="
+              table-cell
               flex-initial
-              border-b-2 border-l-2 border-r-2 border-solid
+              border-b-2 border-r-2 border-solid
               font-normal
               px-2
               py-1
             "
+            :class="{
+              'border-orange': home,
+            }"
           >
             {{ club.short }}
-          </td>
-          <td
+          </div>
+          <div
             class="
+              table-cell
               flex-initial
-              border-b-2 border-l-2 border-r-2 border-solid
+              border-b-2 border-r-2 border-solid
               font-normal
               px-2
             "
+            :class="{
+              'border-orange': home,
+            }"
           >
             {{ club.statistics.matches }}
-          </td>
-          <td
+          </div>
+          <div
             class="
+              table-cell
               flex-initial
-              border-b-2 border-l-2 border-r-2 border-solid
+              border-b-2 border-r-2 border-solid
               font-normal
               px-2
             "
+            :class="{
+              'border-orange': home,
+            }"
           >
             {{ club.statistics.wins }}
-          </td>
-          <td
+          </div>
+          <div
             class="
+              table-cell
               flex-initial
-              border-b-2 border-l-2 border-r-2 border-solid
+              border-b-2 border-r-2 border-solid
               font-normal
               px-2
             "
+            :class="{
+              'border-orange': home,
+            }"
           >
             {{ club.statistics.draws }}
-          </td>
-          <td
+          </div>
+          <div
             class="
+              table-cell
               flex-initial
-              border-b-2 border-l-2 border-r-2 border-solid
+              border-b-2 border-r-2 border-solid
               font-normal
               px-2
             "
+            :class="{
+              'border-orange': home,
+            }"
           >
             {{ club.statistics.losses }}
-          </td>
-          <td
+          </div>
+          <div
             class="
+              table-cell
               flex-initial
-              border-b-2 border-l-2 border-r-2 border-solid
+              border-b-2 border-solid
               font-normal
               px-2
             "
+            :class="{
+              'border-orange': home,
+            }"
           >
             {{ club.statistics.points }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
