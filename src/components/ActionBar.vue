@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row pb-6 font-cursive">
+  <div class="flex flex-row pb-6 font-cursive px-2">
     <div class="grid grid-cols-4 gap-6">
       <button class="shadow-md border-2 rounded p-1 tracking-wide"
       @click="$emit('click', 'song')"
@@ -22,13 +22,14 @@
         EPL Live Table
       </button>
       <button class="shadow-md border-2 rounded p-1 tracking-wide"
+      @click="$emit('click', 'trophy')"
       :class="{
         'border-orange text-cream': home,
         'border-green': away,
         'border-red': third
         }"
       >
-        Roberto Firmino Bio
+        Trophy Wall
       </button>
       <button class="shadow-md border-2 rounded p-1 tracking-wide"
       :class="{
@@ -37,7 +38,7 @@
         'border-red': third
         }"
       >
-        Bobby Firmino Song
+        Bobby on Socials
       </button>
     </div>
   </div>
