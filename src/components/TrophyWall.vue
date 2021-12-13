@@ -1,49 +1,44 @@
 <template>
-<div class="grid grid-cols-3 gap-x-2 px-4 py-4 auto-cols-auto grid-flow-col">
-
-    
-  <div class="grid grid-rows-4 content-center auto-rows-auto border border-2 p-2">
-      
-    <div class="grid grid-cols-2">
+  <div class="flex my-4 px-4 flex-wrap font-mono flex-col">
+    <div class="mb-px flex items-center flex-row">
       <img
         src="../assets/pl-trophy.svg"
-        width="125"
-        height="125"
-        class="justify-self-center col-auto"
+        width="150"
+        height="150"
+        class=""
       />
-      <p class="justify-self-start self-center">
+      <p class="">
         2019-20 English Premier League
       </p>
     </div>
-    <div class="grid grid-cols-2">
+    <div class="flex mb-px items-center flex-row">
       <img
         src="../assets/uefa-supercup.svg"
-         width="125"
-        height="125"
-        class="justify-self-center col-auto"
+        width="150"
+        height="150"
+        class=""
       />
-      <p class="justify-self-start self-center">2019 UEFA Super Cup</p>
+      <p class="">2019 UEFA Super Cup</p>
     </div>
-    <div class="grid grid-cols-2">
+    <div class="flex mb-px items-center flex-row">
       <img
         src="../assets/fifa-club-wc.svg"
-         width="125"
-        height="125"
-        class="justify-self-center col-auto"
+        width="150"
+        height="150"
+        class=""
       />
-      <p class="justify-self-start self-center">2019 FIFA Club World Cup</p>
+      <p class="">2019 FIFA Club World Cup</p>
     </div>
-    <div class="grid grid-cols-2">
+    <div class="flex mb-px items-center flex-row">
       <img
         src="../assets/uefa-cl.svg"
-         width="125"
-        height="125"
-        class="justify-self-center col-auto"
+        width="150"
+        height="150"
+        class=""
       />
-      <p class="justify-self-start self-center">
+      <p class="">
         2018-19 UEFA Champions League
       </p>
     </div>
   </div>
-</div>
 </template>

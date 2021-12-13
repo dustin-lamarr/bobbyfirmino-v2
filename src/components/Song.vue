@@ -1,6 +1,6 @@
 <template>
-<div class="flex-col py-8 text-center font-cursive text-2xl font-light">
-      <h2 class="underline decoration-1 decoration-double underline-offset-4">Best in the World, Bobby Firmino</h2>
+<div class="flex-col m-6 text-center">
+      <h2 class="underline decoration-1 decoration-double text-2xl underline-offset-4 font-cursive">Best in the World, Bobby Firmino</h2>
       <p
         class="
           pl-4
@@ -9,6 +9,7 @@
           break-normal
           leading-relaxed
           w-auto
+          text-xl
         "
       >
         There's something that the Kop wants you to know,
