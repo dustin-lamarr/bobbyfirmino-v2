@@ -33,9 +33,10 @@
         <Song />
       </template>
       <template v-if="table">
-        <PremTable :tableData="tableData" 
-        :home="home"
-        />
+        <PremTable :tableData="tableData" :home="home" />
+      </template>
+      <template v-if="trophy">
+        <TrophyWall />
       </template>
       <template>
         <About v-if="about" />
@@ -50,15 +51,16 @@ import ActionBar from "../components/ActionBar.vue";
 import Song from "../components/Song.vue";
 import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
+import TrophyWall from "../components/TrophyWall.vue";
 import tableAPI from "../js/api.js";
 
 export default {
-  created() {
-    tableAPI().then((res) => {
-      this.tableData = res.data[0].teams;
-      console.log("hit api >:|");
-    });
-  },
+  // created() {
+  //   tableAPI().then((res) => {
+  //     this.tableData = res.data[0].teams;
+  //     console.log("hit api >:|");
+  //   });
+  // },
 
   components: {
     Nav,
@@ -66,6 +68,7 @@ export default {
     About,
     PremTable,
     ActionBar,
+    TrophyWall,
   },
 
   data() {
@@ -77,6 +80,7 @@ export default {
       song: null,
       table: null,
       about: null,
+      trophy: null,
       tableData: {},
     };
   },
@@ -110,14 +114,23 @@ export default {
         case "song":
           this.song = true;
           this.table = null;
+          this.trophy = null;
           break;
 
         case "table":
           this.table = true;
           this.song = null;
+          this.trophy = null;
           break;
 
         case "homeView":
+          this.table = null;
+          this.song = null;
+          this.trophy = null;
+          break;
+
+        case "trophy":
+          this.trophy = true;
           this.table = null;
           this.song = null;
           break;

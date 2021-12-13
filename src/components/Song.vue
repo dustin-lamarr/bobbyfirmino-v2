@@ -1,6 +1,6 @@
 <template>
 <div class="flex-col py-8 text-center font-cursive text-2xl font-light">
-      <h2 class="">Best in the World, Bobby Firmino</h2>
+      <h2 class="underline decoration-1 decoration-double underline-offset-4">Best in the World, Bobby Firmino</h2>
       <p
         class="
           pl-4
