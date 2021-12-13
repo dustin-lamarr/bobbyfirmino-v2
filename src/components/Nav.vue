@@ -7,7 +7,7 @@
       overflow-hidden
       flex flex-row
       justify-between
-      border-b-8 
+      border-b-8
       font-cursive
       text-lg
       tracking-wide
@@ -18,13 +18,13 @@
       <button class="" @click="$emit('homeView', 'homeView')">Home</button>
       <!-- <button class="pl-3 ">Profile</button> -->
       <!-- <button class="px-3 " id="logout">Logout</button> -->
-      <button class=" pl-2" @click="$emit('about')">About</button>
+      <button class="pl-2" @click="$emit('about', 'about')">About</button>
     </div>
     <div class="justify-end flex flex-row mr-4 content-center">
       <p class="">Choose a Kit:</p>
       <button class="px-2" title="Home" @click="$emit('click', 'home')">
         <svg class="inline" width="3px" height="10px">
-          <rect width="3px" height="10px" style="fill:#F7664D"/>
+          <rect width="3px" height="10px" style="fill: #f7664d" />
         </svg>
         <svg class="inline" width="17px" height="10px">
           <rect width="17px" height="10px" style="fill: #b91331" />
@@ -33,24 +33,24 @@
           <rect width="17px" height="10px" style="fill: #b91331" />
         </svg>
         <svg class="inline" width="3px" height="10px">
-          <rect width="3px" height="10px" style="fill:#F7664D"/>
+          <rect width="3px" height="10px" style="fill: #f7664d" />
         </svg>
       </button>
       <button title="Away" @click="$emit('click', 'away')" id="away">
         <svg class="inline" width="8px" height="10px">
-          <rect width="8px" height="10px" style="fill:#ECE7E1"/>
+          <rect width="8px" height="10px" style="fill: #ece7e1" />
         </svg>
         <svg class="inline" width="3px" height="10px">
-          <rect width="3px" height="10px" style="fill:#1E4E56"/>
+          <rect width="3px" height="10px" style="fill: #1e4e56" />
         </svg>
         <svg class="inline" width="18px" height="10px">
-          <rect width="18px" height="10px" style="fill:#ECE7E1"/>
+          <rect width="18px" height="10px" style="fill: #ece7e1" />
         </svg>
         <svg class="inline" width="3px" height="10px">
-          <rect width="3px" height="10px" style="fill:#F7664D"/>
+          <rect width="3px" height="10px" style="fill: #f7664d" />
         </svg>
         <svg class="inline" width="8px" height="10px">
-          <rect width="8px" height="10px" style="fill:#ECE7E1"/>
+          <rect width="8px" height="10px" style="fill: #ece7e1" />
         </svg>
       </button>
       <button class="pl-2" title="Third" @click="$emit('click', 'third')">
@@ -73,7 +73,4 @@
 
 <script></script>
 
-<style >
-
-
-</style>
+<style></style>

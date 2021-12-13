@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row pb-6 font-cursive px-2">
+  <div class="flex flex-row pb-6 font-cursive text-lg px-2 leading-tight md:leading-normal">
     <div class="grid grid-cols-4 gap-6">
       <button class="shadow-md border-2 rounded p-1 tracking-wide"
       @click="$emit('click', 'song')"

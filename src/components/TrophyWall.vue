@@ -1,45 +1,44 @@
 <template>
-  <div class="flex flex-row">
-    <div class="mb-px flex">
+  <div class="flex my-4 px-4 flex-wrap font-mono flex-col">
+    <div class="mb-px flex items-center flex-row">
       <img
         src="../assets/pl-trophy.svg"
         width="150"
         height="150"
-        class="justify-self-start"
+        class=""
       />
-      <p class="justify-self-start self-center">
+      <p class="">
         2019-20 English Premier League
       </p>
     </div>
-    <div class="flex mb-px">
+    <div class="flex mb-px items-center flex-row">
       <img
         src="../assets/uefa-supercup.svg"
         width="150"
         height="150"
-        class="justify-self-center"
+        class=""
       />
-      <p class="justify-self-start self-center">2019 UEFA Super Cup</p>
+      <p class="">2019 UEFA Super Cup</p>
     </div>
-    <div class="flex mb-px">
+    <div class="flex mb-px items-center flex-row">
       <img
         src="../assets/fifa-club-wc.svg"
         width="150"
         height="150"
-        class="justify-self-center"
+        class=""
       />
-      <p class="justify-self-start self-center">2019 FIFA Club World Cup</p>
+      <p class="">2019 FIFA Club World Cup</p>
     </div>
-    <div class="flex mb-px">
+    <div class="flex mb-px items-center flex-row">
       <img
         src="../assets/uefa-cl.svg"
         width="150"
         height="150"
-        class="justify-self-center"
+        class=""
       />
-      <p class="justify-self-start self-center">
+      <p class="">
         2018-19 UEFA Champions League
       </p>
     </div>
   </div>
-  <div></div>
 </template>

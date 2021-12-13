@@ -1,13 +1,18 @@
 <template>
-  <div class="flex flex-row pb-6 font-cursive px-2">
-    <div class="grid grid-cols-4 gap-6">
-      <img class="shadow-md border-2 rounded p-1 tracking-wide"
-      @click="$emit('click', 'socials')"
-      src="../assets/ig.svg"
-      height="200px"
-      width="200px"
-      />
-      
-    </div>
+  <div class="m-6 flex flex-row justify-evenly flex-wrap">
+    <a
+      href="https://www.instagram.com/roberto_firmino/?hl=en"
+      class="flex items-center py-2"
+    >
+      <img src="../assets/ig.svg" width="100" height="100" class="flex" />
+      <h1 class="pl-6">Instagram</h1>
+    </a>
+    <a
+      href="https://www.instagram.com/roberto_firmino/?hl=en"
+      class="flex items-center py-4"
+    >
+      <img src="../assets/facebook.svg" width="100" height="100" class="flex" />
+      <h1 class="pl-2">Facebook</h1>
+    </a>
   </div>
 </template>
