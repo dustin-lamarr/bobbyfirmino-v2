@@ -38,8 +38,11 @@
       <template v-if="trophy">
         <TrophyWall />
       </template>
-      <template>
-        <About v-if="about" />
+      <template v-if="about">
+        <About/>
+      </template>
+      <template v-if="socials">
+        <Socials/>
       </template>
     </div>
   </div>
@@ -52,6 +55,7 @@ import Song from "../components/Song.vue";
 import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
+import Socials from "../components/Socials.vue"
 import tableAPI from "../js/api.js";
 
 export default {
@@ -69,6 +73,7 @@ export default {
     PremTable,
     ActionBar,
     TrophyWall,
+    Socials
   },
 
   data() {
@@ -81,6 +86,7 @@ export default {
       table: null,
       about: null,
       trophy: null,
+      socials: null,
       tableData: {},
     };
   },
@@ -131,6 +137,13 @@ export default {
 
         case "trophy":
           this.trophy = true;
+          this.table = null;
+          this.song = null;
+          break;
+
+        case "socials":
+          this.socials = true;
+          this.trophy = null;
           this.table = null;
           this.song = null;
           break;

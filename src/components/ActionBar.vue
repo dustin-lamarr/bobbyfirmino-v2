@@ -32,6 +32,7 @@
         Trophy Wall
       </button>
       <button class="shadow-md border-2 rounded p-1 tracking-wide"
+      @click="$emit('click', 'socials')"
       :class="{
         'border-orange text-cream': home,
         'border-green': away,
