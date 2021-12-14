@@ -10,46 +10,35 @@
         'border-red text-red': third,
       }"
     />
-    <div
-      class="
-        bg-red
-        w-auto
-        self-center
-        flex flex-col flex-wrap
-        justify-evenly
-        items-center
-        py-4
-        h-auto
-        border-b-8
-      "
-      :class="{
-        'bg-red border-orange text-cream': home,
-        'bg-cream border-orange text-orange': away,
-        'bg-yellow border-red text-red': third,
-      }"
-    >
-      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
-      <template v-if="song">
-        <Song />
+    <Dashboard :home="home" :away="away" :third="third">
+      <template v-slot:action>
+        <ActionBar
+          @click="showAction"
+          :home="home"
+          :away="away"
+          :third="third"
+        />
       </template>
-      <template v-if="table">
-        <PremTable :tableData="tableData" :home="home" :away="away" :third="third" />
+      <template v-slot:content>
+        <Song v-if="song" />
+        <PremTable
+          v-if="table"
+          :tableData="tableData"
+          :home="home"
+          :away="away"
+          :third="third"
+        />
+        <TrophyWall v-if="trophy" />
+        <About v-if="about" />
+        <Socials v-if="socials" />
       </template>
-      <template v-if="trophy">
-        <TrophyWall />
-      </template>
-      <template v-if="about">
-        <About/>
-      </template>
-      <template v-if="socials">
-        <Socials />
-      </template>
-    </div>
+    </Dashboard>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Nav.vue";
+import Dashboard from "../components/Dashboard.vue";
 import ActionBar from "../components/ActionBar.vue";
 import Song from "../components/Song.vue";
 import About from "../components/About.vue";
@@ -68,6 +57,7 @@ export default {
 
   components: {
     Nav,
+    Dashboard,
     Song,
     About,
     PremTable,
