@@ -5,9 +5,9 @@
       @homeView="showAction"
       @about="showAction"
       :class="{
-        'border-orange text-cream': home,
-        'border-green text-cream': away,
-        'border-red text-red': third,
+        'border-orange text-cream-100': home,
+        'border-green text-cream-100': away,
+        'border-red-100 text-red-100': third,
       }"
     />
     <Dashboard :home="home" :away="away" :third="third">
@@ -20,17 +20,20 @@
         />
       </template>
       <template v-slot:content>
-        <Song v-if="song" />
+        <transition mode="out-in">
+        <Song v-if="song"/>
+        
         <PremTable
-          v-if="table"
+          v-else-if="table"
           :tableData="tableData"
           :home="home"
           :away="away"
           :third="third"
         />
-        <TrophyWall v-if="trophy" />
-        <About v-if="about" />
-        <Socials v-if="socials" />
+        <TrophyWall v-else-if="trophy" />
+        <About v-else-if="about" />
+        <Socials v-else-if="socials" />
+        </transition>
       </template>
     </Dashboard>
   </div>
@@ -160,4 +163,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="m-6 flex flex-row justify-evenly flex-wrap">
+  <div class="m-6 flex flex-row justify-evenly flex-wrap font-mono">
     <a
       href="https://www.instagram.com/roberto_firmino/?hl=en"
       class="flex items-center py-2"

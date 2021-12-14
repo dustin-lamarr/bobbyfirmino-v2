@@ -11,9 +11,9 @@
       border-b-8
     "
     :class="{
-      'bg-red border-orange text-cream': home,
-      'bg-cream border-orange text-orange': away,
-      'bg-yellow border-red text-red': third,
+      'bg-red-100 border-orange text-cream-100': home,
+      'bg-cream-100 border-orange text-orange': away,
+      'bg-yellow-100 border-red-100 text-red-100': third,
     }"
   >
     <slot name="action"></slot>

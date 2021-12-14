@@ -4,11 +4,20 @@ module.exports = {
     './src/**/*.{vue,html,js,ts,jsx,tsx}'],
   theme: {
     colors: {
-      red: '#B91331',
+      red: {
+        100:'#B91331',
+        300: '#730c1f'
+      },
       green: '#1E4E56',
-      yellow: '#fef667',
+      yellow: {
+        100:'#fef667',
+        500:'#cbc101'
+      },
       orange: '#F7664D',
-      cream: '#ECE7E1',
+      cream: {
+        100:'#ECE7E1',
+        300:'#b9a892'
+      },
       black: 'black',
       white: 'white'
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-col m-6 text-center">
+  <div class="flex-col m-6 text-center transition ease-in duration-150">
     <h2
       class="
         underline
@@ -20,6 +20,7 @@
         leading-relaxed
         w-auto
         text-xl
+        font-normal
       "
     >
       There's something that the Kop wants you to know,
