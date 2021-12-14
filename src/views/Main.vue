@@ -33,7 +33,7 @@
         <Song />
       </template>
       <template v-if="table">
-        <PremTable :tableData="tableData" :home="home" />
+        <PremTable :tableData="tableData" :home="home" :away="away" :third="third" />
       </template>
       <template v-if="trophy">
         <TrophyWall />
