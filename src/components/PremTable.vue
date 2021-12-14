@@ -11,7 +11,7 @@
         border-2 border-b-0
       "
       :class="{
-        'border-orange': home
+        'border-orange': home,
       }"
     >
       <div class="table-caption flex-row pb-2">2021-22 EPL Table</div>
