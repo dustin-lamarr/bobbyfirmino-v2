@@ -1,5 +1,5 @@
 <template>
-  <div class="flex my-4 px-4 flex-wrap font-mono flex-col">
+  <div class="flex my-4 px-4 flex-wrap font-mono flex-col font-medium">
     <div class="mb-px flex items-center flex-row">
       <img
         src="../assets/pl-trophy.svg"
