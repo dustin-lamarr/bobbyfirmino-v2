@@ -7,6 +7,9 @@
         <br/>
         <br/>
         Visit our <a href="https://www.facebook.com/UtahLFC">Facebook page</a> to learn more.  </p>
+        <br/>
+      
+        bobbyfirmino.com created and maintained by <a href="http://www.dustinlamarr.com">Dustin LaMarr </a>
     
     </div>
 

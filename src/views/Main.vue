@@ -48,7 +48,7 @@ import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
-import tableAPI from "../js/api.js";
+import { tableAPI, etsyAPI } from "../js/api.js";
 
 export default {
   created() {
@@ -56,6 +56,11 @@ export default {
       this.tableData = res.data[0].teams;
       // console.log("hit api >:|");
     });
+
+    etsyAPI().then((res) => {
+      console.log(res)
+    })
+    
   },
 
   components: {

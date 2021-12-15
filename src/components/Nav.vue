@@ -33,13 +33,14 @@
       </button>
     </div>
     <div class="justify-end flex flex-row mr-4 content-center">
-      <p class="">Choose a Kit:</p>
+    <span class="animate-ping-slow">  <p class="">Choose a Kit:</p></span>
       <button
         class="px-2"
         title="Home"
         @click="$emit('click', 'home')"
         alt="change theme to home kit colors"
       >
+      
         <svg class="inline" width="3px" height="10px">
           <rect width="3px" height="10px" style="fill: #f7664d" />
         </svg>
@@ -52,6 +53,7 @@
         <svg class="inline" width="3px" height="10px">
           <rect width="3px" height="10px" style="fill: #f7664d" />
         </svg>
+      
       </button>
       <button
         title="Away"
