@@ -57,9 +57,9 @@ export default {
       // console.log("hit api >:|");
     });
 
-    etsyAPI().then((res) => {
-      console.log(res)
-    })
+    // etsyAPI().then((res) => {
+    //   console.log(res)
+    // })
     
   },
 
