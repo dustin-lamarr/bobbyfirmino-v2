@@ -6,7 +6,7 @@
         LFC Utah is currently looking for anyone interested in getting involved with the supporter's club, and especially needs members with paid membership to LFC. 
         <br/>
         <br/>
-        Visit our <a href="https://www.facebook.com/UtahLFC">Facebook page</a> to learn more.  </p>
+        Visit the <a href="https://www.facebook.com/UtahLFC">Facebook page</a> to learn more.  </p>
     
     </div>
 
