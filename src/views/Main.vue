@@ -33,6 +33,7 @@
         <TrophyWall v-else-if="trophy" />
         <About v-else-if="about" />
         <Socials v-else-if="socials" />
+        <Art v-else-if="art"/>
         </transition>
       </template>
     </Dashboard>
@@ -48,6 +49,7 @@ import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
+import Art from "../components/Art.vue"
 import { tableAPI, etsyAPI } from "../js/api.js";
 
 export default {
@@ -57,9 +59,10 @@ export default {
       // console.log("hit api >:|");
     });
 
-    // etsyAPI().then((res) => {
-    //   console.log(res)
-    // })
+    etsyAPI()
+    .then((res) => {
+      console.log(res)
+    })
     
   },
 
@@ -72,6 +75,7 @@ export default {
     ActionBar,
     TrophyWall,
     Socials,
+    Art
   },
 
   data() {
@@ -85,6 +89,7 @@ export default {
       about: null,
       trophy: null,
       socials: null,
+      art: null,
       tableData: {},
     };
   },
@@ -162,6 +167,15 @@ export default {
           this.song = null;
           this.about = null;
           break;
+
+          case "art":
+          this.art = true;
+          this.socials = null;
+          this.trophy = null;
+          this.table = null;
+          this.song = null;
+          this.about = null;
+          break
       }
     },
   },

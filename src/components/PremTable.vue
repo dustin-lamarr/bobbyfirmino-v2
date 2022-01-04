@@ -14,9 +14,9 @@
         'border-orange': home,
       }"
     >
-      <div class="table-caption flex-row pb-2">2021-22 EPL Table</div>
-      <div class="table-header-group flex">
-        <div class="table-row text-sm text-center border-b-2 flex">
+      <div class="table-caption flex flex-row pb-2">2021-22 EPL Table</div>
+      <div class="table-header-group">
+        <div class="table-row text-sm text-center border-b-2">
           <div
             class="table-cell flex-initial border-b-2 px-2 py-1"
             :class="{

@@ -49,14 +49,14 @@
         :btnTitle="`Bobby on Socials`"
       />
 
-      <!-- <ActionBtn
+      <ActionBtn
         @click="$emit('click', 'art')"
         :home="home"
         :away="away"
         :third="third"
         alt="show links to roberto firmino inspired artwork"
         :btnTitle="`Bobby Inspired Art`"
-      /> -->
+      />
     </div>
   </div>
 </template>

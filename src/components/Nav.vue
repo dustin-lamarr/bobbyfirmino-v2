@@ -35,7 +35,7 @@
     <div class="justify-end flex flex-row mr-4 content-center">
     <span class="animate-ping-slow">  <p class="">Choose a Kit:</p></span>
       <button
-        class="px-2"
+        class="px-2 hover:outline-1 hover:outline-offset-2 hover:outline-cream"
         title="Home"
         @click="$emit('click', 'home')"
         alt="change theme to home kit colors"
@@ -100,6 +100,14 @@
   </nav>
 </template>
 
-<script></script>
+<script>
+export default {
+  props: {
+     home: Boolean,
+    away: Boolean,
+    third: Boolean,
+  }
+}
+</script>
 
 <style></style>

@@ -18,14 +18,14 @@ function tableAPI() {
 function etsyAPI() {
   const etsyOptions = {
     method: "GET",
-    url: "https://openapi.etsy.com/v3/application/shops?shop_name=entire%2Bdesign",
-    headers: {
-      "x-api-key": "uxcmk2zeec8cn1ew5uj7v8s1",
-    },
+    url: "/.netlify/functions/etsy",
+   
   };
-  return axios.request(etsyOptions).catch(function (error) {
+  const etsyData = axios.request(etsyOptions)
+  .catch(function (error) {
     console.log(error);
   });
+return etsyData
 }
 
 export { tableAPI, etsyAPI };
