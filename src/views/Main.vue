@@ -10,39 +10,37 @@
         'border-red-100 text-red-100': third,
       }"
     />
-    <Dashboard :home="home" :away="away" :third="third">
-      <template v-slot:action>
-        <ActionBar
-          @click="showAction"
+    <div
+      class="justify-center border-b-8"
+      :class="{
+        'bg-red-100 border-orange text-cream-100': home,
+        'bg-cream-100 border-orange text-orange': away,
+        'bg-yellow-100 border-red-100 text-red-100': third,
+      }"
+    >
+      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
+      
+      <transition mode="out-in">
+        <Song v-if="song" />
+        <PremTable
+          v-else-if="table"
           :home="home"
           :away="away"
           :third="third"
+          :tableData="tableData"
         />
-      </template>
-      <template v-slot:content>
-        <transition mode="out-in">
-          <Song v-if="song" />
-
-          <PremTable
-            v-else-if="table"
-            :home="home"
-            :away="away"
-            :third="third"
-            :tableData="tableData"
-          />
-          <TrophyWall v-else-if="trophy" />
-          <About v-else-if="about" />
-          <Socials v-else-if="socials" />
-          <Art v-else-if="art" />
-        </transition>
-      </template>
-    </Dashboard>
+        <TrophyWall v-else-if="trophy" />
+        <About v-else-if="about" />
+        <Socials v-else-if="socials" />
+        <Art v-else-if="art" />
+      </transition>
+     
+    </div>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Nav.vue";
-import Dashboard from "../components/Dashboard.vue";
 import ActionBar from "../components/ActionBar.vue";
 import Song from "../components/Song.vue";
 import About from "../components/About.vue";
@@ -55,7 +53,6 @@ import { tableAPI, etsyAPI } from "../js/api.js";
 export default {
   components: {
     Nav,
-    Dashboard,
     Song,
     About,
     PremTable,

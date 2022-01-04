@@ -1,5 +1,5 @@
 <template>
-  <div class="content-center flex-col">
+  <div class="flex flex-row m-6 text-center transition ease-in duration-150 justify-center">
     <div
       class="
         table table-auto

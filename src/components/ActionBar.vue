@@ -10,9 +10,12 @@
       leading-tight
       md:leading-normal
       flex-wrap
+      pt-4
+      pb-2
+      justify-evenly
     "
   >
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid grid-cols-5 gap-6">
       <ActionBtn
         :home="home"
         :away="away"
