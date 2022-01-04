@@ -23,7 +23,7 @@
       />
 
       <ActionBtn
-        @click="$emit('click', 'table')"
+        @click="loadTable, $emit('click', 'table')"
         :home="home"
         :away="away"
         :third="third"
@@ -63,12 +63,13 @@
 
 <script>
 import ActionBtn from "../components/ActionBtn.vue";
+import { tableAPI } from "../js/api.js";
 export default {
   components: { ActionBtn },
   props: {
     home: Boolean,
     away: Boolean,
     third: Boolean,
-  },
+  }
 };
 </script>

@@ -21,19 +21,19 @@
       </template>
       <template v-slot:content>
         <transition mode="out-in">
-        <Song v-if="song"/>
-        
-        <PremTable
-          v-else-if="table"
-          :tableData="tableData"
-          :home="home"
-          :away="away"
-          :third="third"
-        />
-        <TrophyWall v-else-if="trophy" />
-        <About v-else-if="about" />
-        <Socials v-else-if="socials" />
-        <Art v-else-if="art"/>
+          <Song v-if="song" />
+
+          <PremTable
+            v-else-if="table"
+            :home="home"
+            :away="away"
+            :third="third"
+            :tableData="tableData"
+          />
+          <TrophyWall v-else-if="trophy" />
+          <About v-else-if="about" />
+          <Socials v-else-if="socials" />
+          <Art v-else-if="art" />
         </transition>
       </template>
     </Dashboard>
@@ -49,23 +49,10 @@ import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
-import Art from "../components/Art.vue"
+import Art from "../components/Art.vue";
 import { tableAPI, etsyAPI } from "../js/api.js";
 
 export default {
-  created() {
-    tableAPI().then((res) => {
-      this.tableData = res.data[0].teams;
-      // console.log("hit api >:|");
-    });
-
-    etsyAPI()
-    .then((res) => {
-      console.log(res)
-    })
-    
-  },
-
   components: {
     Nav,
     Dashboard,
@@ -75,7 +62,7 @@ export default {
     ActionBar,
     TrophyWall,
     Socials,
-    Art
+    Art,
   },
 
   data() {
@@ -129,6 +116,10 @@ export default {
           break;
 
         case "table":
+          tableAPI().then((res) => {
+            this.tableData = res.data[0].teams;
+          });
+          console.log("hit table api >_< ");
           this.table = true;
           this.song = null;
           this.trophy = null;
@@ -168,20 +159,21 @@ export default {
           this.about = null;
           break;
 
-          case "art":
+        case "art":
+          etsyAPI().then((res) => {
+            console.log(res);
+          });
           this.art = true;
           this.socials = null;
           this.trophy = null;
           this.table = null;
           this.song = null;
           this.about = null;
-          break
+          break;
       }
     },
   },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
