@@ -2,9 +2,7 @@
   <div
     class="flex flex-col m-6 text-center transition ease-in duration-150 h-max p-4"
   >
-    <h2
-      class="underline decoration-1 decoration-double text-xl underline-offset-4 font-cursive font-mono"
-    >
+    <h2 class="text-xl font-mono">
       A Curated List of Art Inspired by Roberto Firmino
     </h2>
     <div
@@ -15,19 +13,21 @@
         'border-red shadow-yellow-500': third,
       }"
     >
-      <!-- add kit classes -->
-      <img
-        :src="this.entireDesign.icon_url_fullxfull"
-        height="150"
-        width="150"
-        class="rounded"
+      <Artist
+        :img="this.entireDesign.icon_url_fullxfull"
+        :shopName="this.entireDesign.shop_name"
+        :title="this.entireDesign.title"
       />
     </div>
   </div>
 </template>
 
 <script>
+import Artist from "../components/Artist.vue";
 export default {
+  components: {
+    Artist,
+  },
   props: {
     entireDesign: {},
     home: Boolean,
