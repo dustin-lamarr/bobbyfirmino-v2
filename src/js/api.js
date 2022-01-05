@@ -11,17 +11,30 @@ function tableAPI() {
   return plData
 }
 
-function entireDesign() {
+function entireDesignShop() {
   const etsyED = {
     method: "GET",
-    url: "/.netlify/functions/entireDesign",
+    url: "/.netlify/functions/edShop",
    
   };
-  const etsyData = axios.request(etsyED)
+  const getEDShop = axios.request(etsyED)
   .catch(function (error) {
     console.log(error);
   });
-return etsyData
+return getEDShop
 }
 
-export { tableAPI, entireDesign };
+function entireDesignListings() {
+  const etsyED = {
+    method: "GET",
+    url: "/.netlify/functions/edListings",
+   
+  };
+  const getEDListings = axios.request(etsyED)
+  .catch(function (error) {
+    console.log(error);
+  });
+return getEDListings
+}
+
+export { tableAPI, entireDesignShop, entireDesignListings };

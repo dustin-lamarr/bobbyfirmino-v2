@@ -14,9 +14,9 @@
       }"
     >
       <Artist
-        :img="this.entireDesign.icon_url_fullxfull"
-        :shopName="this.entireDesign.shop_name"
-        :title="this.entireDesign.title"
+        :img="this.edShop.icon_url_fullxfull"
+        :shopName="this.edShop.shop_name"
+        :title="this.edShop.title"
       />
     </div>
   </div>
@@ -29,7 +29,7 @@ export default {
     Artist,
   },
   props: {
-    entireDesign: {},
+    edShop: {},
     home: Boolean,
     away: Boolean,
     third: Boolean,

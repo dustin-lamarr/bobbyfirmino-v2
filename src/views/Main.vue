@@ -34,7 +34,7 @@
         <Socials v-else-if="socials" />
         <Art
           v-else-if="art"
-          :entireDesign="entireDesign"
+          :edShop="edShop"
           :home="home"
           :away="away"
           :third="third"
@@ -53,7 +53,7 @@ import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
 import Art from "../components/Art.vue";
-import { tableAPI, entireDesign } from "../js/api.js";
+import { tableAPI, entireDesignShop, entireDesignListings } from "../js/api.js";
 
 export default {
   components: {
@@ -80,7 +80,8 @@ export default {
       socials: null,
       art: null,
       tableData: {},
-      entireDesign: {},
+      edShop: {},
+      edListings: {},
     };
   },
 
@@ -163,9 +164,13 @@ export default {
           break;
 
         case "art":
-          entireDesign().then((res) => {
-            this.entireDesign = res.data;
-            console.log("hit table api >_< ", this.entireDesign);
+          entireDesignShop().then((res) => {
+            this.edShop = res.data;
+            console.log("hit shop api >_< ");
+          });
+          entireDesignListings().then((res) => {
+            this.edListings = res.data;
+            console.log("hit listing api >_< ");
           });
           this.art = true;
           this.socials = null;

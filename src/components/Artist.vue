@@ -10,12 +10,25 @@
         </li>
         <li class="font-mono text-sm break-words">{{ this.title }}</li>
       </ul>
+     <!-- <carousel :perPage="1">
+         <slide/>
+         
+     </carousel> -->
     </div>
   </div>
 </template>
 
 <script>
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+
 export default {
+ components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
   props: {
     img: "",
     shopName: "",
