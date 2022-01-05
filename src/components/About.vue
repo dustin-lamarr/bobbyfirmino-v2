@@ -1,4 +1,5 @@
 <template>
+
   <div class="flex-row m-6 text-start transition ease-in duration-150">
     <p>
       This site is sponsored by LFC Utah.
@@ -13,6 +14,7 @@
       learn more.
     </p>
     <br />
+
 
     bobbyfirmino.com created and maintained by
     <a href="http://www.dustinlamarr.com" class="hover:text-cream-100 text-orange font-medium"
