@@ -15,17 +15,17 @@ function tableAPI() {
   });
 }
 
-function etsyAPI() {
-  const etsyOptions = {
+function entireDesign() {
+  const etsyED = {
     method: "GET",
-    url: "/.netlify/functions/etsy",
+    url: "/.netlify/functions/entireDesign",
    
   };
-  const etsyData = axios.request(etsyOptions)
+  const etsyData = axios.request(etsyED)
   .catch(function (error) {
     console.log(error);
   });
 return etsyData
 }
 
-export { tableAPI, etsyAPI };
+export { tableAPI, entireDesign };

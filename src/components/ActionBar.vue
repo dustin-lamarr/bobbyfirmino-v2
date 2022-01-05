@@ -66,7 +66,6 @@
 
 <script>
 import ActionBtn from "../components/ActionBtn.vue";
-import { tableAPI } from "../js/api.js";
 export default {
   components: { ActionBtn },
   props: {
