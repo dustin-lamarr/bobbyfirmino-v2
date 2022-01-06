@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-row">
-    <img :src="this.img" height="150" width="150" class="rounded mr-3" />
+    <img :src="this.shopImg" height="150" width="150" class="rounded mr-3" />
     <div class="flex flex-col w-2/5">
       <ul class="list-none text-left">
         <li
@@ -8,31 +8,36 @@
         >
           {{ this.shopName }}
         </li>
-        <li class="font-mono text-sm break-words">{{ this.title }}</li>
+        <li class="font-mono text-sm break-words">{{ this.info }}</li>
       </ul>
-     <!-- <carousel :perPage="1">
-         <slide/>
+      <div class="flex flex-col w-3/5">
+      <Carousel :itemsToShow="1">
+         <Slide
+          v-for="listing in edListings"
+        :key="listing.listing_id"
+        :title="listing.title"
+        
+         >
+
+         </Slide>
          
-     </carousel> -->
+     </Carousel>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide } from "vue3-carousel";
 
 export default {
- components: {
+  components: {
     Carousel,
-    Slide,
-    Pagination,
-    Navigation,
+    Slide
   },
   props: {
-    img: "",
-    shopName: "",
-    title: "",
+   edListings: {}
   },
 };
 </script>

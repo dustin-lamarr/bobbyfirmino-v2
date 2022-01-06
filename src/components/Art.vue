@@ -14,9 +14,10 @@
       }"
     >
       <Artist
-        :img="this.edShop.icon_url_fullxfull"
-        :shopName="this.edShop.shop_name"
-        :title="this.edShop.title"
+       :edListings="edListings"
+        :shopName="edShop.shop_name"
+        :shopImg="edShop.icon_url_fullxfull"
+        :info="edShop.title"
       />
     </div>
   </div>
@@ -30,6 +31,7 @@ export default {
   },
   props: {
     edShop: {},
+    edListings: {},
     home: Boolean,
     away: Boolean,
     third: Boolean,

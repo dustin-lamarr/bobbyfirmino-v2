@@ -20,26 +20,45 @@
     >
       <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
 
-      <transition mode="out-in">
-        <Song v-if="song" />
-        <PremTable
-          v-else-if="table"
-          :home="home"
-          :away="away"
-          :third="third"
-          :tableData="tableData"
-        />
-        <TrophyWall v-else-if="trophy" />
-        <About v-else-if="about" />
-        <Socials v-else-if="socials" />
+      <template v-if="song">
+        <transition mode="out-in">
+          <Song />
+        </transition>
+      </template>
+      <template v-else-if="table">
+        <transition mode="out-in">
+          <PremTable
+            :home="home"
+            :away="away"
+            :third="third"
+            :tableData="tableData"
+          />
+        </transition>
+      </template>
+      <template v-else-if="trophy">
+        <transition mode="out-in">
+          <TrophyWall />
+        </transition>
+      </template>
+      <template v-else-if="about">
+        <transition mode="out-in">
+          <About />
+        </transition>
+      </template>
+      <template v-else-if="socials">
+        <transition mode="out-in">
+          <Socials />
+        </transition>
+      </template>
+      <template v-else-if="art">
         <Art
-          v-else-if="art"
-          :edShop="edShop"
+          :edListings="edListings"
           :home="home"
           :away="away"
           :third="third"
+          :edShop="edShop"
         />
-      </transition>
+      </template>
     </div>
   </div>
 </template>
@@ -53,7 +72,7 @@ import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
 import Art from "../components/Art.vue";
-import { tableAPI, entireDesignShop, entireDesignListings } from "../js/api.js";
+import { tableAPI, entireDesignAPI } from "../js";
 
 export default {
   components: {
@@ -164,13 +183,13 @@ export default {
           break;
 
         case "art":
-          entireDesignShop().then((res) => {
+          entireDesignAPI.entireDesignShop().then((res) => {
             this.edShop = res.data;
             console.log("hit shop api >_< ");
           });
-          entireDesignListings().then((res) => {
-            this.edListings = res.data;
-            console.log("hit listing api >_< ");
+          entireDesignAPI.entireDesignListings().then((res) => {
+            this.edListings = res.data.results;
+            console.log("hit listing api >_< ", res.data.results);
           });
           this.art = true;
           this.socials = null;
