@@ -10,68 +10,88 @@
         'border-red-100 text-red-100': third,
       }"
     />
-    <Dashboard :home="home" :away="away" :third="third">
-      <template v-slot:action>
-        <ActionBar
-          @click="showAction"
-          :home="home"
-          :away="away"
-          :third="third"
-        />
-      </template>
-      <template v-slot:content>
+    <div
+      class="justify-center border-b-8"
+      :class="{
+        'bg-red-100 border-orange text-cream-100': home,
+        'bg-cream-100 border-orange text-orange': away,
+        'bg-yellow-100 border-red-100 text-red-100': third,
+      }"
+    >
+      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
+
+      <template v-if="song">
         <transition mode="out-in">
-        <Song v-if="song"/>
-        
-        <PremTable
-          v-else-if="table"
-          :tableData="tableData"
-          :home="home"
-          :away="away"
-          :third="third"
-        />
-        <TrophyWall v-else-if="trophy" />
-        <About v-else-if="about" />
-        <Socials v-else-if="socials" />
+          <Song />
         </transition>
       </template>
-    </Dashboard>
+      <template v-else-if="table">
+        <transition mode="out-in">
+          <PremTable
+            :home="home"
+            :away="away"
+            :third="third"
+            :tableData="tableData"
+          />
+        </transition>
+      </template>
+      <template v-else-if="trophy">
+        <transition mode="out-in">
+          <TrophyWall />
+        </transition>
+      </template>
+      <template v-else-if="about">
+        <transition mode="out-in">
+          <About />
+        </transition>
+      </template>
+      <template v-else-if="socials">
+        <transition mode="out-in">
+          <Socials />
+        </transition>
+      </template>
+      <template v-else-if="art">
+        <Art
+          :home="home"
+          :away="away"
+          :third="third"
+        >
+          <template v-slot:artist>
+            <Artist :shopData="shopData" :listingData="listingData"/>
+          </template>
+        </Art>
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
 import Nav from "../components/Nav.vue";
-import Dashboard from "../components/Dashboard.vue";
 import ActionBar from "../components/ActionBar.vue";
 import Song from "../components/Song.vue";
 import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
-import { tableAPI, etsyAPI } from "../js/api.js";
+import Art from "../components/Art.vue";
+import Artist from "../components/Artist.vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide } from "vue3-carousel";
+import { tableAPI, getShop, shopListings, listingImages } from "../js";
 
 export default {
-  created() {
-    tableAPI().then((res) => {
-      this.tableData = res.data[0].teams;
-      // console.log("hit api >:|");
-    });
-
-    etsyAPI().then((res) => {
-      console.log(res)
-    })
-    
-  },
-
   components: {
     Nav,
-    Dashboard,
     Song,
     About,
     PremTable,
     ActionBar,
     TrophyWall,
     Socials,
+    Art,
+    Artist,
+    Carousel,
+    Slide,
   },
 
   data() {
@@ -85,7 +105,20 @@ export default {
       about: null,
       trophy: null,
       socials: null,
+      art: null,
       tableData: {},
+      edData: {
+        shop: {
+          method: "GET",
+          url: "/.netlify/functions/edShop"
+        },
+        listings: {
+          method: "GET",
+          url: "/.netlify/functions/edListings"
+        },
+      },
+      shopData: {},
+      listingData: {}
     };
   },
 
@@ -124,6 +157,10 @@ export default {
           break;
 
         case "table":
+          tableAPI().then((res) => {
+            this.tableData = res.data[0].teams;
+          });
+          console.log("hit table api >_< ");
           this.table = true;
           this.song = null;
           this.trophy = null;
@@ -162,12 +199,26 @@ export default {
           this.song = null;
           this.about = null;
           break;
+
+        case "art":
+          getShop(this.edData.shop).then((res) => {
+            this.shopData = res.data;
+          });
+          shopListings(this.edData.listings).then((res) => {
+            this.listingData = res.data.results
+            console.log("listings data looks like: ", res.data.results);
+          });
+          this.art = true;
+          this.socials = null;
+          this.trophy = null;
+          this.table = null;
+          this.song = null;
+          this.about = null;
+          break;
       }
     },
   },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

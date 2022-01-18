@@ -10,9 +10,12 @@
       leading-tight
       md:leading-normal
       flex-wrap
+      pt-4
+      pb-2
+      justify-evenly
     "
   >
-    <div class="grid grid-cols-4 gap-6">
+    <div class="grid grid-cols-5 gap-6">
       <ActionBtn
         :home="home"
         :away="away"
@@ -23,7 +26,7 @@
       />
 
       <ActionBtn
-        @click="$emit('click', 'table')"
+        @click="loadTable, $emit('click', 'table')"
         :home="home"
         :away="away"
         :third="third"
@@ -49,14 +52,14 @@
         :btnTitle="`Bobby on Socials`"
       />
 
-      <!-- <ActionBtn
+      <ActionBtn
         @click="$emit('click', 'art')"
         :home="home"
         :away="away"
         :third="third"
         alt="show links to roberto firmino inspired artwork"
         :btnTitle="`Bobby Inspired Art`"
-      /> -->
+      />
     </div>
   </div>
 </template>
@@ -69,6 +72,6 @@ export default {
     home: Boolean,
     away: Boolean,
     third: Boolean,
-  },
+  }
 };
 </script>
