@@ -1,46 +1,51 @@
 <template>
-  <div class="flex flex-row">
-    <img :src="this.shopImg" height="150" width="150" class="rounded mr-3" />
-    <div class="flex flex-col w-2/5">
+  <div class="flex flex-col">
+    <a :href="shopData.url">
+      <img
+        :src="shopData.icon_url_fullxfull"
+        height="150"
+        width="150"
+        class="rounded mr-3"
+      />
+    </a>
+    </div>
+    <div class="flex flex-col w-2/5 pl-3">
       <ul class="list-none text-left">
         <li
           class="font-mono text-lg border-dotted border-b border-cream-100 mb-2"
         >
-          {{ this.shopName }}
+          <a :href="shopData.url">
+            {{ shopData.shop_name }}
+          </a>
         </li>
-        <li class="font-mono text-sm break-words">{{ this.info }}</li>
+        <li class="font-mono text-sm break-words">{{ shopData.title }}</li>
       </ul>
-      <div class="flex flex-col w-3/5">
-      <Carousel :itemsToShow="1">
-         <Slide
-          v-for="listing in edListings"
-        :key="listing.listing_id"
-        :title="listing.title"
-        
-         >
-
-         </Slide>
-         
-     </Carousel>
       </div>
-    </div>
-  </div>
+      <div class="flex flex-col w-3/5">
+        <Carousel :itemsToShow="1" :itemsToScroll="10">
+          <Slide
+            v-for="(listing, id) in listingData"
+            :key="id"
+          >
+          <div class="flex">
+            <h3>{{ listing.title.split(':')[0] }}</h3>
+          </div>
+          </Slide>
+        </Carousel>
+      </div>
+    
+  
 </template>
 
 <script>
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
 
 export default {
   components: {
-    Carousel,
-    Slide
+    
   },
   props: {
-   edListings: {},
-   shopName: "",
-   info: "",
-   shopImg: ""
+    shopData: {},
+    listingData: {},
   },
 };
 </script>

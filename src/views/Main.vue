@@ -52,12 +52,14 @@
       </template>
       <template v-else-if="art">
         <Art
-          :edListings="edListings"
           :home="home"
           :away="away"
           :third="third"
-          :edShop="edShop"
-        />
+        >
+          <template v-slot:artist>
+            <Artist :shopData="shopData" :listingData="listingData"/>
+          </template>
+        </Art>
       </template>
     </div>
   </div>
@@ -72,7 +74,10 @@ import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
 import Art from "../components/Art.vue";
-import { tableAPI, getShop } from "../js";
+import Artist from "../components/Artist.vue";
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide } from "vue3-carousel";
+import { tableAPI, getShop, shopListings, listingImages } from "../js";
 
 export default {
   components: {
@@ -84,6 +89,9 @@ export default {
     TrophyWall,
     Socials,
     Art,
+    Artist,
+    Carousel,
+    Slide,
   },
 
   data() {
@@ -99,7 +107,18 @@ export default {
       socials: null,
       art: null,
       tableData: {},
-      edData: {}
+      edData: {
+        shop: {
+          method: "GET",
+          url: "/.netlify/functions/edShop"
+        },
+        listings: {
+          method: "GET",
+          url: "/.netlify/functions/edListings"
+        },
+      },
+      shopData: {},
+      listingData: {}
     };
   },
 
@@ -182,7 +201,13 @@ export default {
           break;
 
         case "art":
-          this.entireDesign()
+          getShop(this.edData.shop).then((res) => {
+            this.shopData = res.data;
+          });
+          shopListings(this.edData.listings).then((res) => {
+            this.listingData = res.data.results
+            console.log("listings data looks like: ", res.data.results);
+          });
           this.art = true;
           this.socials = null;
           this.trophy = null;
@@ -192,13 +217,6 @@ export default {
           break;
       }
     },
-    entireDesign() {
-      const getED ={
-    method: "GET",
-    url: "/.netlify/functions/edShop"
-  };
-getShop(getED)
-    }
   },
 };
 </script>

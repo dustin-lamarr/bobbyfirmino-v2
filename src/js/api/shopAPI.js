@@ -1,21 +1,23 @@
 import axios from "axios";
 
-function getShop(shop) {
-    const shopObject = {}
-  axios.request(shop).then((res) => {
-    (shopObject.shopName = res.data.shop_name),
-      (shopObject.shopTitle = res.data.title),
-      (shopObject.shopImg = res.data.icon_url_fullxfull);
-    console.log(res.data);
-  return shopObject
-  })
+async function getShop(shop) {
+ const shopData = axios.request(shop)
+  return shopData
 }
-  // axios.request(listingParams)
-    // .then((res) => {
-    //   shopObject.listings = res.data.results;
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
-    
-    export { getShop }
+
+async function shopListings(listings) {
+  const listingData = axios.request(listings)
+    .catch((err) => {
+      console.log(err);
+    });
+    return listingData
+}
+
+async function listingImages({ listingID, imageID }) {
+  const imgData = axios.request({ listingID, imageID })
+  .catch((err) => {
+    console.log(err);
+  });
+  return imgData
+}
+    export { getShop, shopListings, listingImages }

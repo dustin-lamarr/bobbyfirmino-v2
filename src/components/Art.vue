@@ -13,23 +13,16 @@
         'border-red shadow-yellow-500': third,
       }"
     >
-      <Artist
-       :edListings="edListings"
-        
-      />
+      <slot name="artist"></slot>
     </div>
   </div>
 </template>
 
 <script>
-import Artist from "../components/Artist.vue";
+
 export default {
-  components: {
-    Artist,
-  },
   props: {
-    edShop: {},
-    edListings: {},
+    shopData:{},
     home: Boolean,
     away: Boolean,
     third: Boolean,
