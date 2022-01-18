@@ -72,7 +72,7 @@ import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
 import Art from "../components/Art.vue";
-import { tableAPI, entireDesignAPI } from "../js";
+import { tableAPI, getShop } from "../js";
 
 export default {
   components: {
@@ -99,8 +99,7 @@ export default {
       socials: null,
       art: null,
       tableData: {},
-      edShop: {},
-      edListings: {},
+      edData: {}
     };
   },
 
@@ -183,14 +182,7 @@ export default {
           break;
 
         case "art":
-          entireDesignAPI.entireDesignShop().then((res) => {
-            this.edShop = res.data;
-            console.log("hit shop api >_< ");
-          });
-          entireDesignAPI.entireDesignListings().then((res) => {
-            this.edListings = res.data.results;
-            console.log("hit listing api >_< ", res.data.results);
-          });
+          this.entireDesign()
           this.art = true;
           this.socials = null;
           this.trophy = null;
@@ -200,6 +192,13 @@ export default {
           break;
       }
     },
+    entireDesign() {
+      const getED ={
+    method: "GET",
+    url: "/.netlify/functions/edShop"
+  };
+getShop(getED)
+    }
   },
 };
 </script>

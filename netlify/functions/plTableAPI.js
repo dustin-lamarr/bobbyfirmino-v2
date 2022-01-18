@@ -14,6 +14,7 @@ exports.handler = async () => {
     }
   );
   const plTableData = await plTable.json();
+  console.log(plTableData)
   return {
     statusCode: 200,
     body: JSON.stringify(plTableData),

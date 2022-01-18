@@ -15,9 +15,7 @@
     >
       <Artist
        :edListings="edListings"
-        :shopName="edShop.shop_name"
-        :shopImg="edShop.icon_url_fullxfull"
-        :info="edShop.title"
+        
       />
     </div>
   </div>

@@ -37,7 +37,10 @@ export default {
     Slide
   },
   props: {
-   edListings: {}
+   edListings: {},
+   shopName: "",
+   info: "",
+   shopImg: ""
   },
 };
 </script>
