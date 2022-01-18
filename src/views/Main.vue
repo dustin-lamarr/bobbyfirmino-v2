@@ -159,8 +159,9 @@ export default {
         case "table":
           tableAPI().then((res) => {
             this.tableData = res.data[0].teams;
+            console.log("hit table api >_< ", res.data);
           });
-          console.log("hit table api >_< ");
+          
           this.table = true;
           this.song = null;
           this.trophy = null;

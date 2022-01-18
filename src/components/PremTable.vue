@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-row m-6 text-center transition ease-in duration-150 justify-center">
     <div
+    v-if="tableData"
       class="
         table table-auto
         h-full
@@ -160,7 +161,11 @@
           </div>
         </div>
       </div>
+      
     </div>
+    <div v-else>
+      <h2>Ran out of API :(</h2>
+      </div>
   </div>
 </template>
 
