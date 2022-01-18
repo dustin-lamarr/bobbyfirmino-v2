@@ -1,5 +1,6 @@
 <template>
-  <div class="content-center flex-col">
+ 
+  <div v-if="tableData" class="content-center flex-col">
     <div
       class="
         table table-auto
@@ -162,8 +163,11 @@
       </div>
     </div>
   </div>
-</template>
 
+<div v-else>
+  <h2>Hit my limit :( gotta get a new prepaid API card</h2>
+</div>
+</template>
 <script>
 export default {
   props: {

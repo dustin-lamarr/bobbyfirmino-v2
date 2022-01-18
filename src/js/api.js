@@ -7,7 +7,7 @@ function tableAPI() {
     params: { competitionId: "17", seasonId: "37036" },
     headers: {
       "x-rapidapi-host": "viperscore.p.rapidapi.com",
-      "x-rapidapi-key": "176422e431msh80623a6b50ada5fp135307jsnab52c5c4c171",
+      "x-rapidapi-key": "92513a2285mshdac3e54d0ed6625p13832ajsn852959549d6a",
     },
   };
   return axios.request(tableOptions).catch(function (error) {
