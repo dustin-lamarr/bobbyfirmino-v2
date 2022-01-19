@@ -18,8 +18,7 @@
         'bg-yellow-100 border-red-100 text-red-100': third,
       }"
     >
-      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
-
+      <ActionBar @click="showAction" :home="home" :away="away" :third="third"/>
       <template v-if="song">
         <transition mode="out-in">
           <Song />
@@ -51,13 +50,9 @@
         </transition>
       </template>
       <template v-else-if="art">
-        <Art
-          :home="home"
-          :away="away"
-          :third="third"
-        >
+        <Art :home="home" :away="away" :third="third">
           <template v-slot:artist>
-            <Artist :shopData="shopData" :listingData="listingData"/>
+            <Artist :shopData="shopData" :listingData="listingData" />
           </template>
         </Art>
       </template>
@@ -75,8 +70,6 @@ import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
 import Art from "../components/Art.vue";
 import Artist from "../components/Artist.vue";
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Slide } from "vue3-carousel";
 import { tableAPI, getShop, shopListings, listingImages } from "../js";
 
 export default {
@@ -90,8 +83,6 @@ export default {
     Socials,
     Art,
     Artist,
-    Carousel,
-    Slide,
   },
 
   data() {
@@ -110,15 +101,15 @@ export default {
       edData: {
         shop: {
           method: "GET",
-          url: "/.netlify/functions/edShop"
+          url: "/.netlify/functions/edShop",
         },
         listings: {
           method: "GET",
-          url: "/.netlify/functions/edListings"
+          url: "/.netlify/functions/edListings",
         },
       },
       shopData: {},
-      listingData: {}
+      listingData: {},
     };
   },
 
@@ -160,9 +151,8 @@ export default {
           tableAPI().then((res) => {
             console.log("hit table api >_< ", res.data);
             this.tableData = res.data[0].teams;
-            
           });
-          
+
           this.table = true;
           this.song = null;
           this.trophy = null;
@@ -207,7 +197,7 @@ export default {
             this.shopData = res.data;
           });
           shopListings(this.edData.listings).then((res) => {
-            this.listingData = res.data.results
+            this.listingData = res.data.results;
             console.log("listings data looks like: ", res.data.results);
           });
           this.art = true;

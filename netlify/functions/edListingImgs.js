@@ -6,7 +6,7 @@ exports.handler = async ({ listing_id, image_id }) => {
   const listingImgs = await fetch(
     `https://openapi.etsy.com/v3/application/shops/8861893/listings/${listing_id}/images/${image_id}`,
     {
-      headers: {"x-api-key": `${etsyKey}`},
+      headers: {"x-api-key": etsyKey},
       mode: "cors"
     }
   );

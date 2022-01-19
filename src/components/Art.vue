@@ -6,7 +6,7 @@
       A Curated List of Art Inspired by Roberto Firmino
     </h2>
     <div
-      class="flex flex-row border-4 mt-4 rounded-lg p-4 shadow-md"
+      class="flex flex-row border-4 mt-4 rounded-lg px-4 shadow-md"
       :class="{
         'border-orange text-cream-100 shadow-red-300': home,
         'border-green shadow-cream-300': away,
@@ -19,10 +19,9 @@
 </template>
 
 <script>
-
 export default {
   props: {
-    shopData:{},
+    shopData: {},
     home: Boolean,
     away: Boolean,
     third: Boolean,
