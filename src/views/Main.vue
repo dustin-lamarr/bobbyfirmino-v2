@@ -158,8 +158,9 @@ export default {
 
         case "table":
           tableAPI().then((res) => {
-            this.tableData = res.data[0].teams;
             console.log("hit table api >_< ", res.data);
+            this.tableData = res.data[0].teams;
+            
           });
           
           this.table = true;
