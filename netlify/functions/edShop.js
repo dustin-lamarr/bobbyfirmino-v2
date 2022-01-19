@@ -6,7 +6,7 @@ exports.handler = async (event) => {
   try {
     const shopRes = await fetch("https://openapi.etsy.com/v3/application/shops/8861893", {
       method: "GET",
-      headers: { "x-api-key": `${etsyKey}` },
+      headers: { "x-api-key": etsyKey },
       mode: "cors"
     })
     const apiRes = await shopRes.json();

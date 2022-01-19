@@ -9,6 +9,7 @@
       transition
       duration-0
       hover:scale-110
+      focus:scale-110
       "
        :class="{
           'border-orange text-cream-100 shadow-red-300': home,
