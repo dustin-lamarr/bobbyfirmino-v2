@@ -3,15 +3,13 @@
     class="
       flex flex-col
       md:flex-row
-      pb-6
       font-cursive
       text-lg
       px-2
       leading-tight
       md:leading-normal
       flex-wrap
-      pt-4
-      pb-2
+      py-4
       justify-evenly
     "
   >

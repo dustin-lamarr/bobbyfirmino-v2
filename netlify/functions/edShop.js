@@ -10,7 +10,6 @@ exports.handler = async (event) => {
       mode: "cors"
     })
     const apiRes = await shopRes.json();
-    // console.log('event res looks like ', event)
     return {
       statusCode: 200,
       body: JSON.stringify(apiRes),
