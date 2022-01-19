@@ -1,4 +1,3 @@
-// const fetch = require("node-fetch");
 var axios = require("axios").default;
 require("dotenv").config();
 const plKey = process.env.PL_API_KEY;
