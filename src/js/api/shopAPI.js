@@ -1,23 +1,46 @@
 import axios from "axios";
-
-async function getShop(shop) {
- const shopData = axios.request(shop)
-  return shopData
-}
-
-async function shopListings(listings) {
-  const listingData = axios.request(listings)
+const shopObject = {};
+const imgOptions = {
+  url: "/.netlify/functions/edListingImgs",
+};
+async function getShop(shop, listings) {
+  await axios
+    .request(shop)
+    .then((res) => {
+      shopObject.id = res.data.shop_id;
+      shopObject.name = res.data.shop_name;
+      shopObject.url = res.data.url;
+      shopObject.title = res.data.title;
+      shopObject.icon = res.data.icon_url_fullxfull;
+    })
     .catch((err) => {
       console.log(err);
     });
-    return listingData
+
+  await axios
+    .request(listings)
+    .then((res) => {
+      const listingsArray = res.data.results;
+      shopObject.listings = listingsArray;
+      
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+    // async function shopImgs(){ await axios.request(imgOptions)
+    // .then((res) => {
+    //   console.log("img req ", res.data)
+    // })}
+
+    // shopObject.listings.images =  shopObject.listings.forEach((listing) => {
+    //   console.log("listing id ", listing.listing_id)
+    //  shopImgs(listing.listing_id)
+    // })
+    
+
+  // console.log("shop obj", shopObject);
+  return await shopObject;
 }
 
-async function listingImages({ listingID, imageID }) {
-  const imgData = axios.request({ listingID, imageID })
-  .catch((err) => {
-    console.log(err);
-  });
-  return imgData
-}
-    export { getShop, shopListings, listingImages }
+export { getShop };

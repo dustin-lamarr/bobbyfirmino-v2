@@ -2,9 +2,11 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 const etsyKey = process.env.ETSY_API_KEY;
 
-exports.handler = async ({ listing_id, image_id }) => {
+exports.handler = async ({ id }) => {
+  // var id = parseInt(listing_id)
+  console.log("listing id ", id)
   const listingImgs = await fetch(
-    `https://openapi.etsy.com/v3/application/shops/8861893/listings/${listing_id}/images/${image_id}`,
+    `https://openapi.etsy.com/v3/application/shops/8861893/listings/${id}/images`,
     {
       headers: {"x-api-key": etsyKey},
       mode: "cors"
