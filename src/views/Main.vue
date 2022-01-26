@@ -52,7 +52,7 @@
       <template v-else-if="art">
         <Art :home="home" :away="away" :third="third">
           <template v-slot:artist>
-            <Artist :shopData="shopData" :listingData="listingData" />
+            <Artist :shopData="edShop" />
           </template>
         </Art>
       </template>
@@ -70,7 +70,7 @@ import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
 import Art from "../components/Art.vue";
 import Artist from "../components/Artist.vue";
-import { tableAPI, getShop, shopListings, listingImages } from "../js";
+import { tableAPI, getShop } from "../js";
 
 export default {
   components: {
@@ -108,8 +108,7 @@ export default {
           url: "/.netlify/functions/edListings",
         },
       },
-      shopData: {},
-      listingData: {},
+      edShop: {},
     };
   },
 
@@ -149,7 +148,6 @@ export default {
 
         case "table":
           tableAPI().then((res) => {
-            console.log("hit table api >_< ", res.data);
             this.tableData = res.data[0].teams;
           });
 
@@ -193,12 +191,8 @@ export default {
           break;
 
         case "art":
-          getShop(this.edData.shop).then((res) => {
-            this.shopData = res.data;
-          });
-          shopListings(this.edData.listings).then((res) => {
-            this.listingData = res.data.results;
-            console.log("listings data looks like: ", res.data.results);
+          getShop(this.edData.shop, this.edData.listings).then((res) => {
+            this.edShop = res;
           });
           this.art = true;
           this.socials = null;
