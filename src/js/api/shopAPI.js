@@ -1,9 +1,8 @@
 import axios from "axios";
-const shopObject = {};
-const imgOptions = {
-  url: "/.netlify/functions/edListingImgs",
-};
+
 async function getShop(shop, listings) {
+  const shopObject = {};
+
   await axios
     .request(shop)
     .then((res) => {
@@ -22,24 +21,13 @@ async function getShop(shop, listings) {
     .then((res) => {
       const listingsArray = res.data.results;
       shopObject.listings = listingsArray;
-      
     })
     .catch((err) => {
       console.log(err);
     });
 
-    // async function shopImgs(){ await axios.request(imgOptions)
-    // .then((res) => {
-    //   console.log("img req ", res.data)
-    // })}
 
-    // shopObject.listings.images =  shopObject.listings.forEach((listing) => {
-    //   console.log("listing id ", listing.listing_id)
-    //  shopImgs(listing.listing_id)
-    // })
-    
-
-  // console.log("shop obj", shopObject);
+  console.log("shop obj", shopObject);
   return await shopObject;
 }
 

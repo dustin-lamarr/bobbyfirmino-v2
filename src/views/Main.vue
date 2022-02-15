@@ -18,7 +18,7 @@
         'bg-yellow-100 border-red-100 text-red-100': third,
       }"
     >
-      <ActionBar @click="showAction" :home="home" :away="away" :third="third"/>
+      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
       <template v-if="song">
         <transition mode="out-in">
           <Song />
@@ -52,7 +52,7 @@
       <template v-else-if="art">
         <Art :home="home" :away="away" :third="third">
           <template v-slot:artist>
-            <Artist :shopData="edShop" />
+            <Artist :shopData="edShop" :shopImgs="this.edData.edListingImgs"/>
           </template>
         </Art>
       </template>
@@ -106,6 +106,9 @@ export default {
         listings: {
           method: "GET",
           url: "/.netlify/functions/edListings",
+        },
+        entireDesignImgs: {
+          url: "/.netlify/functions/edListingImgs",
         },
       },
       edShop: {},
@@ -191,9 +194,7 @@ export default {
           break;
 
         case "art":
-          getShop(this.edData.shop, this.edData.listings).then((res) => {
-            this.edShop = res;
-          });
+          this.getEntireDesign();
           this.art = true;
           this.socials = null;
           this.trophy = null;
@@ -202,6 +203,12 @@ export default {
           this.about = null;
           break;
       }
+    },
+    getEntireDesign() {
+      getShop(this.edData.shop, this.edData.listings).then((res) => {
+        this.edShop = res;
+        console.log("front end shop object ", this.edShop);
+      });
     },
   },
 };

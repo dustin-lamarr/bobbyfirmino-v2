@@ -14,9 +14,10 @@
         </a>
         <button
           class="rounded ml-4 mb-2 text-xs tracking-tight bg-orange px-0.5"
-          @click="handleShowMore(), $emit('click', 'more')"
+          @click="this.showMore = true"
+          :id="this.shopData.title"
         >
-          Show More
+          Show Designs
         </button>
       </li>
       <li class="font-mono text-sm break-words">{{ shopData.title }}</li>
@@ -27,7 +28,11 @@
     class="flex flex-col w-3/5 px-4 place-content-center"
   >
     <Carousel :itemsToShow="1" :itemsToScroll="1" :snapAlign="center">
-      <Slide v-for="(listing, id) in shopData.listings" :key="id">
+      <Slide
+        v-for="(listing, id) in shopData.listings"
+        :key="id"
+        @click="getListingImgs()"
+      >
         <div class="flex justify-center items-center">
           <img />
           <a :href="listing.url" class="hover:text-orange"
@@ -44,7 +49,7 @@
 </template>
 
 <script>
-// import shopAPI from "../js"
+import axios from "axios";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation, Pagination } from "vue3-carousel";
 export default {
@@ -56,6 +61,7 @@ export default {
   },
   props: {
     shopData: {},
+    shopImgs: {}
   },
   data() {
     return {
@@ -63,10 +69,16 @@ export default {
     };
   },
   methods: {
-    handleShowMore() {
-      this.showMore === null ? this.showMore = true : this.showMore = null
-
-    }
+    getListingImgs(shop) {
+      axios
+        .request(shop)
+        .then((res) => {
+          console.log("img req ", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
