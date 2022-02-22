@@ -1,17 +1,6 @@
 <template>
   <div
-    class="
-      flex flex-col
-      md:flex-row
-      font-cursive
-      text-lg
-      px-2
-      leading-tight
-      md:leading-normal
-      flex-wrap
-      py-4
-      justify-evenly
-    "
+    class="flex flex-col md:flex-row font-cursive text-lg px-2 leading-tight md:leading-normal flex-wrap py-4 justify-evenly"
   >
     <div class="grid grid-cols-5 gap-6">
       <ActionBtn
@@ -19,7 +8,9 @@
         :away="away"
         :third="third"
         :btnTitle="`Bobby Firmino Song`"
+        :actionView="actionView.song"
         @click="$emit('click', 'song')"
+        :class="{'scale-110' : actionView.song}"
         alt="display bobby firmino song lyrics"
       />
 
@@ -29,6 +20,8 @@
         :away="away"
         :third="third"
         :btnTitle="`EPL Live Table`"
+        :actionView="actionView.table"
+        :class="{'scale-110' : actionView.table}"
         alt="show english premier league live table"
       />
 
@@ -39,6 +32,8 @@
         :third="third"
         alt="show trophy wall"
         :btnTitle="`Trophy Wall`"
+        :actionView="actionView.trophy"
+        :class="{'scale-110' : actionView.trophy}"
       />
 
       <ActionBtn
@@ -46,6 +41,8 @@
         :home="home"
         :away="away"
         :third="third"
+        :actionView="actionView.socials"
+        :class="{'scale-110' : actionView.socials}"
         alt="show links to roberto firmino socials"
         :btnTitle="`Bobby on Socials`"
       />
@@ -55,6 +52,8 @@
         :home="home"
         :away="away"
         :third="third"
+        :actionView="actionView.art"
+        :class="{'scale-110' : actionView.art}"
         alt="show links to roberto firmino inspired artwork"
         :btnTitle="`Bobby Inspired Art`"
       />
@@ -70,6 +69,7 @@ export default {
     home: Boolean,
     away: Boolean,
     third: Boolean,
+    actionView: {}
   }
 };
 </script>

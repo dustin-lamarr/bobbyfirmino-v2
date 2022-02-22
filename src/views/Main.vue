@@ -18,13 +18,19 @@
         'bg-yellow-100 border-red-100 text-red-100': third,
       }"
     >
-      <ActionBar @click="showAction" :home="home" :away="away" :third="third" />
-      <template v-if="song">
+      <ActionBar
+        @click="showAction"
+        :home="home"
+        :away="away"
+        :third="third"
+        :actionView="actionView"
+      />
+      <template v-if="this.actionView.song">
         <transition mode="out-in">
           <Song />
         </transition>
       </template>
-      <template v-else-if="table">
+      <template v-else-if="this.actionView.table">
         <transition mode="out-in">
           <PremTable
             :home="home"
@@ -34,25 +40,28 @@
           />
         </transition>
       </template>
-      <template v-else-if="trophy">
+      <template v-else-if="this.actionView.trophy">
         <transition mode="out-in">
           <TrophyWall />
         </transition>
       </template>
-      <template v-else-if="about">
+      <template v-else-if="actionView.about">
         <transition mode="out-in">
           <About />
         </transition>
       </template>
-      <template v-else-if="socials">
+      <template v-else-if="actionView.socials">
         <transition mode="out-in">
           <Socials />
         </transition>
       </template>
-      <template v-else-if="art">
+      <template v-else-if="actionView.art">
         <Art :home="home" :away="away" :third="third">
           <template v-slot:artist>
-            <Artist :shopData="edShop" :shopImgs="this.edData.edListingImgs"/>
+            <Artist
+              :shopData="edShop"
+              :shopImgData="this.edData.edListingImgs"
+            />
           </template>
         </Art>
       </template>
@@ -88,15 +97,18 @@ export default {
   data() {
     return {
       homeView: true,
+      actionView: {
+        song: null,
+        table: null,
+        about: null,
+        trophy: null,
+        socials: null,
+        art: null,
+      },
       home: true,
       away: null,
       third: null,
-      song: null,
-      table: null,
-      about: null,
-      trophy: null,
-      socials: null,
-      art: null,
+
       tableData: {},
       edData: {
         shop: {
@@ -142,64 +154,70 @@ export default {
     showAction(action) {
       switch (action) {
         case "song":
-          this.song = true;
-          this.table = null;
-          this.trophy = null;
-          this.socials = null;
+          this.actionView.song = true;
+          this.actionView.table = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
           this.about = null;
+          this.homeView = null;
           break;
 
         case "table":
           tableAPI().then((res) => {
             this.tableData = res.data[0].teams;
           });
-
-          this.table = true;
-          this.song = null;
-          this.trophy = null;
-          this.socials = null;
+          this.homeView = null;
+          this.actionView.table = true;
+          this.actionView.song = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
           this.about = null;
           break;
 
         case "homeView":
-          this.table = null;
-          this.song = null;
-          this.trophy = null;
-          this.socials = null;
+          this.actionView.table = null;
+          this.actionView.song = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
           this.about = null;
+          this.homeView = true;
           break;
 
         case "about":
+          this.homeView = null;
           this.about = true;
-          this.table = null;
-          this.song = null;
-          this.trophy = null;
-          this.socials = null;
+          this.actionView.table = null;
+          this.actionView.song = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
           break;
 
         case "trophy":
-          this.trophy = true;
+          this.homeView = null;
+          this.actionView.trophy = true;
           this.table = null;
-          this.song = null;
-          this.socials = null;
+          this.actionView.song = null;
+          this.actionView.socials = null;
           this.about = null;
           break;
 
         case "socials":
-          this.socials = true;
-          this.trophy = null;
-          this.table = null;
-          this.song = null;
+          this.homeView = null;
+          this.actionView.socials = true;
+          this.actionView.trophy = null;
+          this.actionView.table = null;
+          this.actionView.song = null;
           this.about = null;
           break;
 
         case "art":
+          this.homeView = null;
           this.getEntireDesign();
-          this.art = true;
-          this.socials = null;
-          this.trophy = null;
-          this.table = null;
-          this.song = null;
+          this.actionView.art = true;
+          this.actionView.socials = null;
+          this.actionView.trophy = null;
+          this.actionView.table = null;
+          this.actionView.song = null;
           this.about = null;
           break;
       }
