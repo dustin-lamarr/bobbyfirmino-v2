@@ -10,7 +10,7 @@
       membership to LFC.
       <br />
       <br />
-      Visit our <a href="https://www.facebook.com/UtahLFC">Facebook page</a> to
+      Visit our <a href="https://www.facebook.com/UtahLFC" class="hover:text-cream-100 text-orange">Facebook page</a> to
       learn more.
     </p>
     <br />

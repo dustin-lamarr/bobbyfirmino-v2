@@ -14,9 +14,10 @@
         </a>
         <button
           class="rounded ml-4 mb-2 text-xs tracking-tight bg-orange px-0.5"
-          @click="handleShowMore(), $emit('click', 'more')"
+          @click="this.showMore = true"
+          :id="this.shopData.title"
         >
-          Show More
+          Show Designs
         </button>
       </li>
       <li class="font-mono text-sm break-words">{{ shopData.title }}</li>
@@ -27,11 +28,13 @@
     class="flex flex-col w-3/5 px-4 place-content-center"
   >
     <Carousel :itemsToShow="1" :itemsToScroll="1" :snapAlign="center">
-      <Slide v-for="(listing, id) in shopData.listings" :key="id">
+      <Slide v-for="listing in shopData.listings" :key="listing.listing_id">
         <div class="flex justify-center items-center">
-          <img />
-          <a :href="listing.url" class="hover:text-orange"
-            ><h3>{{ listing.title.split(":")[0] }}</h3>
+          <img :id="listing.listing_id" />
+          <a :href="listing.url" class="hover:text-orange">
+            <!-- This needs to be moved to computed w/ logic for specific shops. 
+            Most will have weird titles because of seo-->
+            <h3>{{ listing.title.split(":")[0] }}</h3>
           </a>
         </div>
       </Slide>
@@ -44,7 +47,7 @@
 </template>
 
 <script>
-// import shopAPI from "../js"
+import axios from "axios";
 import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Navigation, Pagination } from "vue3-carousel";
 export default {
@@ -56,6 +59,7 @@ export default {
   },
   props: {
     shopData: {},
+    shopImgData: {},
   },
   data() {
     return {
@@ -63,10 +67,17 @@ export default {
     };
   },
   methods: {
-    handleShowMore() {
-      this.showMore === null ? this.showMore = true : this.showMore = null
-
-    }
+    getListingImgs(shopImgData, id) {
+      console.log("img id", id);
+      axios
+        .request(shopImgData, id)
+        .then((res) => {
+          console.log("img req ", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

@@ -19,7 +19,11 @@
 </template>
 
 <script>
+import Artist from "../components/Artist.vue"
 export default {
+  components: {
+    Artist
+  },
   props: {
     shopData: {},
     home: Boolean,
