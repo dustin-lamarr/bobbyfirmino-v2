@@ -27,7 +27,7 @@ async function getShop(shop, listings) {
     });
 
 
-  console.log("shop obj", shopObject);
+  // console.log("shop obj", shopObject);
   return await shopObject;
 }
 

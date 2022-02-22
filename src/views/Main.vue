@@ -225,7 +225,7 @@ export default {
     getEntireDesign() {
       getShop(this.edData.shop, this.edData.listings).then((res) => {
         this.edShop = res;
-        console.log("front end shop object ", this.edShop);
+        // console.log("front end shop object ", this.edShop);
       });
     },
   },
