@@ -11,38 +11,6 @@
 <script>
 export default {
   name: "Home",
-
-  data() {
-    return {
-      home: true,
-      away: null,
-      third: null,
-    };
-  },
-
-  methods: {
-    showKit(kit) {
-      switch (kit) {
-        case "home":
-          this.home = true;
-          this.away = null;
-          this.third = null;
-          break;
-
-        case "away":
-          this.home = null;
-          this.away = true;
-          this.third = null;
-          break;
-
-        case "third":
-          this.home = null;
-          this.away = null;
-          this.third = true;
-          break;
-      }
-    },
-  },
 };
 </script>
 

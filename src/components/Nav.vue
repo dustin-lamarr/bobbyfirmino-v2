@@ -16,12 +16,11 @@
   >
     <div class="justify-start ml-4" id="navbarLinks">
       <button
+      @click="$router.push('/')"
         class=""
         alt="go to home view"
       >
-      <router-link to="/">
         Home
-      </router-link>
       </button>  
       <!-- <button class="pl-3 ">Profile</button> -->
       <!-- <button class="px-3 " id="logout">Logout</button> -->

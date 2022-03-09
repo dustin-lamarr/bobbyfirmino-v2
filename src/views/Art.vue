@@ -13,26 +13,31 @@
         'border-red shadow-yellow-500': third,
       }"
     >
-      <slot name="entireDesign"></slot>
+      <Artist
+        :shopData="edShop"
+      ></Artist>
     </div>
   </div>
 </template>
 
 <script>
 import { getShop } from "../js";
-import Artist from '../components/Artist.vue'
+import Artist from "../components/Artist.vue";
 export default {
+  mounted() {
+    getShop(this.edData.shop, this.edData.listings).then((res) => {
+      this.edShop = res;
+    });
+  },
   name: "Art",
-
+  components: { Artist },
   props: {
-    shopData: {},
     home: Boolean,
     away: Boolean,
     third: Boolean,
   },
   data() {
     return {
-      tableData: {},
       edData: {
         shop: {
           method: "GET",
@@ -48,29 +53,6 @@ export default {
       },
       edShop: {},
     };
-  },
-
-  methods: {
-    showAction(action) {
-      switch (action) {
-        case "art":
-          this.homeView = null;
-          this.getEntireDesign();
-          this.actionView.art = true;
-          this.actionView.socials = null;
-          this.actionView.trophy = null;
-          this.actionView.table = null;
-          this.actionView.song = null;
-          this.about = null;
-          break;
-      }
-    },
-    getEntireDesign() {
-      getShop(this.edData.shop, this.edData.listings).then((res) => {
-        this.edShop = res;
-        // console.log("front end shop object ", this.edShop);
-      });
-    },
   },
 };
 </script>

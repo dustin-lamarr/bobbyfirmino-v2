@@ -128,41 +128,21 @@
 <script>
 import { tableAPI } from "../js";
 export default {
-  name: "Table",
-
-  props: {
-    tableData: {},
-    home: Boolean,
+  mounted() {
+    tableAPI().then((res) => {
+      this.tableData = res.data[0].teams;
+    });
   },
-
+  name: "Table",
+  props: {
+    home: Boolean,
+    away: Boolean,
+    third: Boolean
+  },
   data() {
     return {
-      homeView: true,
-      home: true,
-      away: null,
-      third: null,
-
       tableData: {},
     };
-  },
-
-  methods: {
-    showAction(action) {
-      switch (action) {
-  
-        case "table":
-          tableAPI().then((res) => {
-            this.tableData = res.data[0].teams;
-          });
-          this.homeView = null;
-          this.actionView.table = true;
-          this.actionView.song = null;
-          this.actionView.trophy = null;
-          this.actionView.socials = null;
-          this.about = null;
-          break;
-      }
-    },
   },
 };
 </script>

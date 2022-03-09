@@ -17,7 +17,7 @@
       }"
     >
       <ActionBar :home="home" :away="away" :third="third" />
-      <router-view></router-view>
+      <router-view :home="home" :away="away" :third="third"></router-view>
     </div>
   </div>
 </template>
