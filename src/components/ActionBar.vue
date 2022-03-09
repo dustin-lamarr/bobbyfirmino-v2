@@ -8,52 +8,42 @@
         :away="away"
         :third="third"
         :btnTitle="`Bobby Firmino Song`"
-        :actionView="actionView.song"
-        @click="$emit('click', 'song')"
-        :class="{'scale-110' : actionView.song}"
+        @click="$router.push('song')"
         alt="display bobby firmino song lyrics"
       />
 
       <ActionBtn
-        @click="loadTable, $emit('click', 'table')"
+        @click="$router.push('table')"
         :home="home"
         :away="away"
         :third="third"
         :btnTitle="`EPL Live Table`"
-        :actionView="actionView.table"
-        :class="{'scale-110' : actionView.table}"
         alt="show english premier league live table"
       />
 
       <ActionBtn
-        @click="$emit('click', 'trophy')"
+        @click="$router.push('trophy-wall')"
         :home="home"
         :away="away"
         :third="third"
         alt="show trophy wall"
         :btnTitle="`Trophy Wall`"
-        :actionView="actionView.trophy"
-        :class="{'scale-110' : actionView.trophy}"
       />
 
       <ActionBtn
-        @click="$emit('click', 'socials')"
+        @click="$router.push('socials')"
         :home="home"
         :away="away"
         :third="third"
-        :actionView="actionView.socials"
-        :class="{'scale-110' : actionView.socials}"
         alt="show links to roberto firmino socials"
         :btnTitle="`Bobby on Socials`"
       />
 
       <ActionBtn
-        @click="$emit('click', 'art')"
+        @click="$router.push('art')"
         :home="home"
         :away="away"
         :third="third"
-        :actionView="actionView.art"
-        :class="{'scale-110' : actionView.art}"
         alt="show links to roberto firmino inspired artwork"
         :btnTitle="`Bobby Inspired Art`"
       />
@@ -69,7 +59,6 @@ export default {
     home: Boolean,
     away: Boolean,
     third: Boolean,
-    actionView: {}
   }
 };
 </script>
