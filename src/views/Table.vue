@@ -1,16 +1,10 @@
 <template>
-  <div class="flex flex-row m-6 text-center transition ease-in duration-150 justify-center">
+  <div
+    class="flex flex-row m-6 text-center transition ease-in duration-150 justify-center"
+  >
     <div
-    v-if="tableData"
-      class="
-        table table-auto
-        h-full
-        mr-6
-        ml-4
-        w-auto
-        font-mono
-        border-2 border-b-0
-      "
+      v-if="tableData"
+      class="table table-auto h-full mr-6 ml-4 w-auto font-mono border-2 border-b-0"
       :class="{
         'border-orange': home,
       }"
@@ -75,14 +69,7 @@
           class="table-row text-center text-sm"
         >
           <div
-            class="
-              table-cell
-              flex-initial
-              border-b-2 border-r-2 border-solid
-              font-normal
-              px-2
-              py-1
-            "
+            class="table-cell flex-initial border-b-2 border-r-2 border-solid font-normal px-2 py-1"
             :class="{
               'border-orange': home,
             }"
@@ -90,13 +77,7 @@
             {{ club.short }}
           </div>
           <div
-            class="
-              table-cell
-              flex-initial
-              border-b-2 border-r-2 border-solid
-              font-normal
-              px-2
-            "
+            class="table-cell flex-initial border-b-2 border-r-2 border-solid font-normal px-2"
             :class="{
               'border-orange': home,
             }"
@@ -104,13 +85,7 @@
             {{ club.statistics.matches }}
           </div>
           <div
-            class="
-              table-cell
-              flex-initial
-              border-b-2 border-r-2 border-solid
-              font-normal
-              px-2
-            "
+            class="table-cell flex-initial border-b-2 border-r-2 border-solid font-normal px-2"
             :class="{
               'border-orange': home,
             }"
@@ -118,13 +93,7 @@
             {{ club.statistics.wins }}
           </div>
           <div
-            class="
-              table-cell
-              flex-initial
-              border-b-2 border-r-2 border-solid
-              font-normal
-              px-2
-            "
+            class="table-cell flex-initial border-b-2 border-r-2 border-solid font-normal px-2"
             :class="{
               'border-orange': home,
             }"
@@ -132,13 +101,7 @@
             {{ club.statistics.draws }}
           </div>
           <div
-            class="
-              table-cell
-              flex-initial
-              border-b-2 border-r-2 border-solid
-              font-normal
-              px-2
-            "
+            class="table-cell flex-initial border-b-2 border-r-2 border-solid font-normal px-2"
             :class="{
               'border-orange': home,
             }"
@@ -146,13 +109,7 @@
             {{ club.statistics.losses }}
           </div>
           <div
-            class="
-              table-cell
-              flex-initial
-              border-b-2 border-solid
-              font-normal
-              px-2
-            "
+            class="table-cell flex-initial border-b-2 border-solid font-normal px-2"
             :class="{
               'border-orange': home,
             }"
@@ -161,19 +118,33 @@
           </div>
         </div>
       </div>
-      
     </div>
     <div v-else>
       <h2>Ran out of API :(</h2>
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import { tableAPI } from "../js";
 export default {
+  mounted() {
+    tableAPI().then((res) => {
+      this.tableData = res.data[0].teams;
+    });
+  },
+  name: "Table",
   props: {
-    tableData: {},
     home: Boolean,
+    away: Boolean,
+    third: Boolean
+  },
+  data() {
+    return {
+      tableData: {},
+    };
   },
 };
 </script>
+
+<style scoped></style>

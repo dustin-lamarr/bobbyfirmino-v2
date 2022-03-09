@@ -16,17 +16,17 @@
   >
     <div class="justify-start ml-4" id="navbarLinks">
       <button
+      @click="$router.push('/')"
         class=""
-        @click="$emit('homeView', 'homeView')"
         alt="go to home view"
       >
         Home
-      </button>
+      </button>  
       <!-- <button class="pl-3 ">Profile</button> -->
       <!-- <button class="px-3 " id="logout">Logout</button> -->
       <button
+      @click="$router.push('about')"
         class="pl-2"
-        @click="$emit('about', 'about')"
         alt="go to about view"
       >
         About
