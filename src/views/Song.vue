@@ -1,0 +1,227 @@
+<template>
+  <div class="w-screen h-screen bg-black sm:overflow-hidden overflow-y-scroll">
+    <Nav
+      @click="showKit"
+      @homeView="showAction"
+      @about="showAction"
+      :class="{
+        'border-orange text-cream-100': home,
+        'border-green text-cream-100': away,
+        'border-red-100 text-red-100': third,
+      }"
+    />
+    <div
+      class="justify-center border-b-8"
+      :class="{
+        'bg-red-100 border-orange text-cream-100': home,
+        'bg-cream-100 border-orange text-orange': away,
+        'bg-yellow-100 border-red-100 text-red-100': third,
+      }"
+    >
+      <ActionBar
+        @click="showAction"
+        :home="home"
+        :away="away"
+        :third="third"
+        :actionView="actionView"
+      />
+      <div class="flex-col m-6 text-center transition ease-in duration-150">
+    <h2
+      class="
+        underline
+        decoration-1 decoration-double
+        text-2xl
+        underline-offset-4
+        font-cursive
+      "
+    >
+      Best in the World, Bobby Firmino
+    </h2>
+    <p
+      class="
+        pl-4
+        pt-4
+        whitespace-pre-wrap
+        break-normal
+        leading-relaxed
+        w-auto
+        text-xl
+        font-normal
+      "
+    >
+      There's something that the Kop wants you to know,
+      <br />
+      The best in the world his name is Bobby Firmino.
+      <br />
+      Our number nine, Give the ball to him and he'll score every time.
+      <br />
+      Sim señhor, Pass the ball to Bobby and he will score.
+    </p>
+  </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Nav from "../components/Nav.vue";
+import ActionBar from "../components/ActionBar.vue";
+import Song from "../components/Song.vue";
+import PremTable from "../components/PremTable.vue";
+import TrophyWall from "../components/TrophyWall.vue";
+import Socials from "../components/Socials.vue";
+import Art from "../components/Art.vue";
+import Artist from "../components/Artist.vue";
+import { tableAPI, getShop } from "../js";
+
+export default {
+  components: {
+    Nav,
+    Song,
+    PremTable,
+    ActionBar,
+    TrophyWall,
+    Socials,
+    Art,
+    Artist,
+  },
+
+  data() {
+    return {
+      homeView: true,
+      actionView: {
+        song: null,
+        table: null,
+        about: null,
+        trophy: null,
+        socials: null,
+        art: null,
+      },
+      home: true,
+      away: null,
+      third: null,
+
+      tableData: {},
+      edData: {
+        shop: {
+          method: "GET",
+          url: "/.netlify/functions/edShop",
+        },
+        listings: {
+          method: "GET",
+          url: "/.netlify/functions/edListings",
+        },
+        entireDesignImgs: {
+          url: "/.netlify/functions/edListingImgs",
+        },
+      },
+      edShop: {},
+    };
+  },
+
+  computed: {},
+
+  methods: {
+    showKit(kit) {
+      switch (kit) {
+        case "home":
+          this.home = true;
+          this.away = null;
+          this.third = null;
+          break;
+
+        case "away":
+          this.home = null;
+          this.away = true;
+          this.third = null;
+          break;
+
+        case "third":
+          this.home = null;
+          this.away = null;
+          this.third = true;
+          break;
+      }
+    },
+    showAction(action) {
+      switch (action) {
+        case "song":
+          this.actionView.song = true;
+          this.actionView.table = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
+          this.about = null;
+          this.homeView = null;
+          break;
+
+        case "table":
+          tableAPI().then((res) => {
+            this.tableData = res.data[0].teams;
+          });
+          this.homeView = null;
+          this.actionView.table = true;
+          this.actionView.song = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
+          this.about = null;
+          break;
+
+        case "homeView":
+          this.actionView.table = null;
+          this.actionView.song = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
+          this.about = null;
+          this.homeView = true;
+          break;
+
+        case "about":
+          this.homeView = null;
+          this.about = true;
+          this.actionView.table = null;
+          this.actionView.song = null;
+          this.actionView.trophy = null;
+          this.actionView.socials = null;
+          break;
+
+        case "trophy":
+          this.homeView = null;
+          this.actionView.trophy = true;
+          this.table = null;
+          this.actionView.song = null;
+          this.actionView.socials = null;
+          this.about = null;
+          break;
+
+        case "socials":
+          this.homeView = null;
+          this.actionView.socials = true;
+          this.actionView.trophy = null;
+          this.actionView.table = null;
+          this.actionView.song = null;
+          this.about = null;
+          break;
+
+        case "art":
+          this.homeView = null;
+          this.getEntireDesign();
+          this.actionView.art = true;
+          this.actionView.socials = null;
+          this.actionView.trophy = null;
+          this.actionView.table = null;
+          this.actionView.song = null;
+          this.about = null;
+          break;
+      }
+    },
+    getEntireDesign() {
+      getShop(this.edData.shop, this.edData.listings).then((res) => {
+        this.edShop = res;
+        // console.log("front end shop object ", this.edShop);
+      });
+    },
+  },
+};
+</script>
+
+<style scoped></style>
+

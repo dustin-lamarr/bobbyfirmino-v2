@@ -25,46 +25,6 @@
         :third="third"
         :actionView="actionView"
       />
-      <template v-if="this.actionView.song">
-        <transition mode="out-in">
-          <Song />
-        </transition>
-      </template>
-      <template v-else-if="this.actionView.table">
-        <transition mode="out-in">
-          <PremTable
-            :home="home"
-            :away="away"
-            :third="third"
-            :tableData="tableData"
-          />
-        </transition>
-      </template>
-      <template v-else-if="this.actionView.trophy">
-        <transition mode="out-in">
-          <TrophyWall />
-        </transition>
-      </template>
-      <template v-else-if="actionView.about">
-        <transition mode="out-in">
-          <About />
-        </transition>
-      </template>
-      <template v-else-if="actionView.socials">
-        <transition mode="out-in">
-          <Socials />
-        </transition>
-      </template>
-      <template v-else-if="actionView.art">
-        <Art :home="home" :away="away" :third="third">
-          <template v-slot:artist>
-            <Artist
-              :shopData="edShop"
-              :shopImgData="this.edData.edListingImgs"
-            />
-          </template>
-        </Art>
-      </template>
     </div>
   </div>
 </template>
@@ -73,7 +33,6 @@
 import Nav from "../components/Nav.vue";
 import ActionBar from "../components/ActionBar.vue";
 import Song from "../components/Song.vue";
-import About from "../components/About.vue";
 import PremTable from "../components/PremTable.vue";
 import TrophyWall from "../components/TrophyWall.vue";
 import Socials from "../components/Socials.vue";
@@ -85,7 +44,6 @@ export default {
   components: {
     Nav,
     Song,
-    About,
     PremTable,
     ActionBar,
     TrophyWall,

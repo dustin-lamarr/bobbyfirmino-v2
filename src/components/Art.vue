@@ -13,7 +13,7 @@
         'border-red shadow-yellow-500': third,
       }"
     >
-      <slot name="artist"></slot>
+      <slot name="entireDesign"></slot>
     </div>
   </div>
 </template>
